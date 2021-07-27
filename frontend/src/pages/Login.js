@@ -15,7 +15,7 @@ function Login() {
 
     return (
         <div className="hero min-h-screen bg-base-200">
-            <div className="flex-col justify-around hero-content lg:flex-row lg:w-full">
+            <div className="flex-col justify-between hero-content lg:flex-row lg:w-full">
                 <div className="text-center lg:text-left">
                     <h1 className="mb-5 text-5xl font-bold">
                         Selamat Datang
