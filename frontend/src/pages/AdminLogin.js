@@ -9,7 +9,7 @@ function Login() {
         setIsLoading(true)
         setTimeout(() => {
             setIsLoading(false)
-            history.push("/dashboard")
+            history.push("/admin/dashboard")
         }, 3000)
     }
 
@@ -21,7 +21,7 @@ function Login() {
                         Selamat Datang
                     </h1>
                     <p className="mb-5">
-                        Situs pemilihan KPU - tau dah pokoknya disini nanti deskripsi webnya aja.
+                        Situs pemilihan KPU - Admin
                     </p>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
