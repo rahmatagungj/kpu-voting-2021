@@ -29,7 +29,7 @@ function Dashboard() {
                 <h3 className="text-base font-bold text-primary">Pemilihan Kandidat</h3>
                 <hr className="my-3"/>
                 <div className="mx-auto container flex items-center justify-evenly w-full">
-                    <ul className="w-full hidden md:flex items-center pb-2">
+                    <ul className="w-full flex items-center pb-2">
                         <li onClick={() => setActiveStatus(1)} className={activeStatus == 1 ? "py-2 px-4 cursor-pointer bg-primary ease-in duration-150 rounded  text-xs xl:text-sm leading-none text-center text-white shadow-lg" : "py-2 px-4 cursor-pointer  bg-transparent hover:bg-indigo-50 ease-in duration-150 rounded text-xs xl:text-sm leading-none text-primary"}>
                             Kandidat Satu
                         </li>
@@ -37,21 +37,6 @@ function Dashboard() {
                             Kandidat Dua
                         </li>
                     </ul>
-                    <div className="md:hidden relative w-11/12 mx-auto bg-white rounded">
-                        <div className="absolute inset-0 m-auto mr-4 z-0 w-6 h-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-selector" width={24} height={24} viewBox="0 0 24 24" strokeWidth="1.5" stroke="#A0AEC0" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" />
-                                <polyline points="8 9 12 5 16 9" />
-                                <polyline points="16 15 12 19 8 15" />
-                            </svg>
-                        </div>
-                        <select aria-label="Selected tab" className="form-select block w-full p-3 border border-gray-300 rounded text-gray-600 appearance-none bg-transparent relative z-10">
-                            <option selected className="text-sm text-gray-600">
-                                Kandidat Satu
-                            </option>
-                            <option className="text-sm text-gray-600">Kandidat Dua</option>
-                        </select>
-                    </div>
                 </div>
                 {activeStatus == 1 && <h1>Kandidat 1</h1>}
                 {activeStatus == 2 && <h1>Kandidat 2</h1>}
