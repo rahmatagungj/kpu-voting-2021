@@ -5,6 +5,14 @@ import {Link} from "react-router-dom";
 function DashboardAdmin(props) {
     return (
         <main className="bg-gray-100 dark:bg-gray-800 h-screen overflow-hidden relative">
+            <div id="modal-help" className="modal">
+                <div className="modal-box">
+                    <p>informasi taro sini</p>
+                    <div className="modal-action">
+                        <a href="#" className="btn">Tutup</a>
+                    </div>
+                </div>
+            </div>
             <div className="shadow-lg bg-base-200 drawer drawer-mobile h-screen">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle"/>
                 <div className="flex flex-col drawer-content">
@@ -22,10 +30,12 @@ function DashboardAdmin(props) {
                         </div>
                         <div className="relative z-20 flex flex-col justify-end h-full px-3 md:w-full">
                             <div className="relative p-1 flex items-center w-full space-x-4 justify-end">
-                                <button
+                                <a href={"#modal-help"}>
+                                    <button
                                     className="flex p-1 items-center rounded-full bg-white shadow text-gray-400 hover:text-gray-700 text-lg">
                                     <MdHelp size={30}/>
                                 </button>
+                                </a>
                                 <span className="w-1 h-8 rounded-lg bg-gray-200"/>
                                 <div className="dropdown dropdown-end">
                                     <button className="flex items-center text-gray-500 dark:text-white text-md"
