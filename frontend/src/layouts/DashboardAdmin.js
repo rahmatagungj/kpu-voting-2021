@@ -1,5 +1,5 @@
 import React from 'react';
-import {MdExitToApp, MdHelp, MdInfo, MdPeople} from "react-icons/md";
+import {MdExitToApp, MdHelp, MdInfo, MdPeople,MdWork} from "react-icons/md";
 import {Link} from "react-router-dom";
 
 function DashboardAdmin(props) {
@@ -63,17 +63,17 @@ function DashboardAdmin(props) {
                             <div>
                                 <Link
                                     className="w-full text-gray-800 dark:text-white flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start"
-                                    to="/dashboard"><MdPeople size={20}/>
+                                    to="/admin/dashboard"><MdPeople size={20}/>
                                     <span className="mx-2 text-sm font-normal">Hasil Pemilihan</span>
                                 </Link>
                                 <Link
                                     className="w-full text-gray-800 dark:text-white flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start"
-                                    to="/dashboard"><MdPeople size={20}/>
+                                    to="/admin/dashboard"><MdWork size={20}/>
                                     <span className="mx-2 text-sm font-normal">Data Pemilihan</span>
                                 </Link>
                                 <Link
                                     className="w-full text-gray-800 dark:text-white flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start"
-                                    to="/dashboard"><MdInfo size={20}/>
+                                    to="/admin/dashboard/information"><MdInfo size={20}/>
                                     <span className="mx-2 text-sm font-normal">Informasi Pemilihan</span>
                                 </Link>
                             </div>

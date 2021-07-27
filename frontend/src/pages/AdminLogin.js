@@ -10,7 +10,7 @@ function Login() {
         setTimeout(() => {
             setIsLoading(false)
             history.push("/admin/dashboard")
-        }, 3000)
+        }, 1000)
     }
 
     return (

@@ -40,7 +40,7 @@ function DashboardPublic(props) {
                                     </button>
                                     <ul className="shadow menu dropdown-content bg-base-100 rounded w-52 text-black">
                                         <li className="text-red-700">
-                                            <Link to="login"><MdExitToApp className="mr-3"/>Keluar</Link>
+                                            <Link to="/login"><MdExitToApp className="mr-3"/>Keluar</Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -68,7 +68,7 @@ function DashboardPublic(props) {
                                 </Link>
                                 <Link
                                     className="w-full text-gray-800 dark:text-white flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start"
-                                    to="/dashboard"><MdInfo size={20}/>
+                                    to="/dashboard/information"><MdInfo size={20}/>
                                     <span className="mx-2 text-sm font-normal">Informasi Pemilihan</span>
                                 </Link>
                             </div>
