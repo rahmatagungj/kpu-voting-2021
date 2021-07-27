@@ -8,12 +8,14 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/AdminLogin";
+import Test from "./pages/Test";
 
 function App() {
   return (
       <Router>
           <Switch>
               <Route path="/" component={Home} exact/>
+              <Route path="/test" component={Test} exact/>
               <Route path="/login" component={Login} exact/>
               <Route path="/dashboard" component={Dashboard} exact/>
               <Route path="/admin" component={AdminLogin} exact/>
