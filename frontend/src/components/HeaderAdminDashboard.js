@@ -6,7 +6,7 @@ function HeaderDashboard() {
             <div className="navbar mb-2 shadow-lg bg-primary text-neutral-content ">
                 <div className="flex-1 px-2 lg:flex-none">
                     <a className="text-lg font-bold">
-                        KPU
+                        KPU ADMIN
                     </a>
                 </div>
                 <div className="flex justify-end flex-1 px-2">
