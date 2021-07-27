@@ -44,7 +44,7 @@ function Login(props) {
                             </div>
                             <div>
                                 <button type="submit"
-                                        className={isLoading ? "btn btn-info btn-block loading rounded" : "btn btn-info btn-block rounded"}
+                                        className={isLoading ? "btn btn-primary btn-block loading rounded" : "btn btn-primary btn-block rounded"}
                                         disabled={isLoading}
                                 onClick={HandleLogin}>
                                     Masuk
