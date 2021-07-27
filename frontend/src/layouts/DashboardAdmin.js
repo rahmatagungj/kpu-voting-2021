@@ -16,7 +16,7 @@ function DashboardAdmin(props) {
             <div className="shadow-lg bg-base-200 drawer drawer-mobile h-screen">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle"/>
                 <div className="flex flex-col drawer-content">
-                    <header className="bg-base-200 w-full h-16 z-40 flex items-center justify-between sticky top-0 z-50 shadow-sm sm:shadow-none p-2">
+                    <header className="bg-primary w-full h-16 z-40 flex items-center justify-between sticky top-0 z-50 shadow-sm sm:shadow-none p-2">
                         <div className="block lg:hidden ml-6">
                             <label htmlFor="my-drawer-2"
                                    className="cursor-pointer flex p-2 items-center rounded-full text-gray-400 hover:text-gray-700 bg-white shadow text-md drawer-button lg:hidden">
@@ -38,7 +38,7 @@ function DashboardAdmin(props) {
                                 </a>
                                 <span className="w-1 h-8 rounded-lg bg-gray-200"/>
                                 <div className="dropdown dropdown-end">
-                                    <button className="flex items-center text-gray-500 dark:text-white text-md"
+                                    <button className="flex items-center text-white dark:text-white text-md"
                                             tabIndex={0}>
                                         Rahmat AJ
                                         <svg width="20" height="20" className="ml-2 text-gray-400" fill="currentColor"

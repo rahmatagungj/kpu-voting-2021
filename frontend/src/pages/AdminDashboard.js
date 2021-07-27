@@ -1,5 +1,5 @@
 import React from 'react';
-import dataStat from "../data/dataStat";
+import {dataStat} from "../data/dataStat";
 import DashboardAdmin from "../layouts/DashboardAdmin";
 
 function AdminDashboard() {
