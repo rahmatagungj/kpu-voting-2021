@@ -43,7 +43,7 @@ function DashboardPublic(props) {
                                 <div className="dropdown dropdown-end">
                                     <button className="flex items-center text-gray-500 dark:text-white text-md"
                                             tabIndex={0}>
-                                        Rahmat Agung Julians
+                                        Rahmat AJ
                                         <svg width="20" height="20" className="ml-2 text-gray-400" fill="currentColor"
                                              viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                                             <path

@@ -14,11 +14,11 @@ function AdminLogin(props) {
     }
 
     return (
-        <div className="relative min-h-screen flex ">
+        <div className="relative min-h-screen flex">
             <div
-                className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 bg-white">
+                className="flex sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 md:bg-white bg-primary bg-opacity-25">
                 <div
-                    className="md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full w-2/6 xl:w-2/6 p-8  md:p-10 lg:p-14 sm:rounded-lg md:rounded-none bg-white">
+                    className="m-5 sm:m-0 md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full w-2/6 xl:w-2/6 p-8 md:p-10 lg:p-14 rounded md:rounded-none bg-white shadow-lg">
 
                     <div className="max-w-md w-full space-y-8">
                         <div className="text-center">
@@ -44,7 +44,7 @@ function AdminLogin(props) {
                             </div>
                             <div>
                                 <button type="submit"
-                                        className={isLoading ? "btn btn-info btn-block loading" : "btn btn-info btn-block"}
+                                        className={isLoading ? "btn btn-info btn-block loading rounded" : "btn btn-info btn-block rounded"}
                                         disabled={isLoading}
                                         onClick={HandleLogin}>
                                     Masuk
