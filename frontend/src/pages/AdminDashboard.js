@@ -1,12 +1,12 @@
 import React from 'react';
-import HeaderAdminDashboard from "../components/HeaderAdminDashboard";
-import dataStat from "../data/dataStat";
+import {dataStat} from "../data/dataStat";
+import DashboardAdmin from "../layouts/DashboardAdmin";
 
 function AdminDashboard() {
 
     const RenderStat = () => {
         return (
-            <div className="flex justify-center mb-5">
+            <div className="flex justify-center mb-5 w-full">
                 <div className="stats shadow w-full rounded">
                     {
                         dataStat.map(data => (
@@ -30,12 +30,10 @@ function AdminDashboard() {
         )
     }
     return (
-        <div>
-            <HeaderAdminDashboard/>
-            <div className="m-5">
+        <DashboardAdmin>
             <RenderStat/>
             Admin
-            </div></div>
+        </DashboardAdmin>
     );
 }
 
