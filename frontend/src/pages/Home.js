@@ -23,7 +23,7 @@ function Home() {
 
       <div className="hero min-h-screen bg-primary">
         <div className="hero-overlay bg-cover opacity-40" style={{ backgroundImage: "url(https://i.ibb.co/Pwc98xp/6386-min.jpg)" }}></div>
-        <div className="text-center hero-content">
+        <div className="text-center hero-content text-neutral-content">
           <div className="max-w-3xl">
             <h1 className="mb-5 text-7xl font-bold">PEMILWA STKIP 2021</h1>
             <p className="mb-12 text-xl">Pemilihan Umum Mahasiswa Sekolah Tinggi Keguruan dan Ilmu Pendidikan Kuningan.</p>
