@@ -58,9 +58,9 @@ function DashboardAdmin(props) {
         </div>
         <div className="border-r-2 drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay" />
-          <div className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+          <div className="menu p-4 overflow-y-auto w-72 bg-base-100 text-base-content">
             <div className="flex items-center justify-start pt-6 ml-8">
-              <p className="font-bold dark:text-white text-xl">KPU</p>
+              <p className="font-bold dark:text-white text-xl">Komisi Pemilihan Umum</p>
             </div>
             <nav className="mt-6 border-t-2 border-fuchsia-600">
               <div>

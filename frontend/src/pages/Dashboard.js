@@ -9,9 +9,9 @@ function Dashboard() {
             <section className="bg-gray-100 dark:bg-gray-900 lg:flex lg:justify-center mt-5">
                 <div className="bg-white dark:bg-gray-800  lg:flex lg:max-w-5xl py-3">
                     <div className="lg:w-2/5">
-                        <div className="h-64 bg-cover bg-no-repeat bg-center rounded lg:h-100 bg-indigo-50" style={{backgroundImage: `url(${candidateImage})`}}></div>
+                        <div className="h-80 bg-cover bg-no-repeat bg-center rounded lg:h-100 bg-indigo-50" style={{backgroundImage: `url(${candidateImage})`}}></div>
                     </div>
-                    <div className="max-w-xl px-6 py-10 sm:py-0 lg:max-w-5xl lg:w-1/2 relative">
+                    <div className="max-w-xl px-6 py-10 lg:py-0 lg:max-w-5xl lg:w-1/2 relative">
                         <h2 className="text-2xl font-bold text-gray-800 dark:text-white md:text-3xl">Kandidat <span className="text-indigo-600 dark:text-indigo-400">{candidateName}</span></h2>
                         <p className="mt-4 text-gray-600 dark:text-gray-400">{visiMisi}</p>
 
@@ -49,7 +49,7 @@ function Dashboard() {
             {/*End Alert*/}
 
             {/* dashboard */}
-            <div className="container border-t-4 border-primary bg-white p-5 rounded">
+            <div className="border-t-4 border-primary bg-white p-5 rounded">
                 <h3 className="text-base font-bold text-primary">Pemilihan Kandidat</h3>
                 <hr className="my-5"/>
                 <div className="mx-auto container flex items-center justify-evenly w-full">
