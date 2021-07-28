@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import "./Login.css"
 import {useHistory} from "react-router-dom"
+import Seo from "../components/Seo"
 
 function AdminLogin(props) {
     const history = useHistory()
@@ -14,6 +15,8 @@ function AdminLogin(props) {
     }
 
     return (
+        <>
+            <Seo title={"Masuk Pengurus"}/>
         <div className="relative min-h-screen flex">
             <div
                 className="flex sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 md:bg-white bg-primary bg-opacity-25">
@@ -79,6 +82,7 @@ function AdminLogin(props) {
 
             </div>
         </div>
+        </>
     );
 }
 

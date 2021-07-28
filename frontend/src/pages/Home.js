@@ -1,8 +1,10 @@
 import React from "react";
+import Seo from "../components/Seo";
 
 function Home() {
   return (
     <div>
+      <Seo title={"Pemilihan Umum Raya - STKIP Muhammadiyah Kuningan 2021"}/>
       {/* navbar */}
       <div class="navbar shadow-lg bg-primary text-neutral-content flex items-center justify-between sticky top-0 z-50">
         <div class="px-2 mx-2 navbar-start">

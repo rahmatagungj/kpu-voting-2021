@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import DashboardPublic from "../layouts/DashboardPublic";
+import Seo from "../components/Seo"
 
 function Dashboard() {
     const [activeStatus, setActiveStatus] = useState(1);
@@ -29,7 +30,7 @@ function Dashboard() {
 
     return (
         <DashboardPublic>
-
+            <Seo title={"Beranda"}/>
             {/*Alert*/}
             <div className="alert alert-warning mb-5 bg-warning rounded">
                 <div className="flex-1">

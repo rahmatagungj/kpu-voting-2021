@@ -1,6 +1,7 @@
 import React from 'react';
 import {dataStat} from "../data/dataStat";
 import DashboardAdmin from "../layouts/DashboardAdmin";
+import Seo from "../components/Seo"
 
 function AdminDashboard() {
 
@@ -31,6 +32,7 @@ function AdminDashboard() {
     }
     return (
         <DashboardAdmin>
+            <Seo title={"Beranda Pengurus"}/>
             <RenderStat/>
             Admin
         </DashboardAdmin>
