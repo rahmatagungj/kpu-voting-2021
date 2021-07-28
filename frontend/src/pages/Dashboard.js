@@ -9,7 +9,7 @@ function Dashboard() {
             <section className="bg-gray-100 dark:bg-gray-900 lg:flex lg:justify-center mt-5">
                 <div className="bg-white dark:bg-gray-800  lg:flex lg:max-w-5xl py-3">
                     <div className="lg:w-2/5">
-                        <div className="h-64 bg-cover rounded lg:h-100 bg-indigo-50" style={{backgroundImage: `url(${candidateImage})`}}></div>
+                        <div className="h-64 bg-cover bg-no-repeat bg-center rounded lg:h-100 bg-indigo-50" style={{backgroundImage: `url(${candidateImage})`}}></div>
                     </div>
                     <div className="max-w-xl px-6 py-10 sm:py-0 lg:max-w-5xl lg:w-1/2 relative">
                         <h2 className="text-2xl font-bold text-gray-800 dark:text-white md:text-3xl">Kandidat <span className="text-indigo-600 dark:text-indigo-400">{candidateName}</span></h2>
