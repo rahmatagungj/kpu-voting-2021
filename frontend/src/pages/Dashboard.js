@@ -3,6 +3,30 @@ import DashboardPublic from "../layouts/DashboardPublic";
 
 function Dashboard() {
     const [activeStatus, setActiveStatus] = useState(1);
+
+    const RenderCandidate = ({candidateName, candidateImage, visiMisi, candidateNumber}) => {
+        return (
+            <section className="bg-gray-100 dark:bg-gray-900 lg:flex lg:justify-center mt-5">
+                <div className="bg-white dark:bg-gray-800  lg:flex lg:max-w-5xl py-3">
+                    <div className="lg:w-2/5">
+                        <div className="h-64 bg-cover rounded lg:h-100 bg-indigo-50" style={{backgroundImage: `url(${candidateImage})`}}></div>
+                    </div>
+                    <div className="max-w-xl px-6 py-10 sm:py-0 lg:max-w-5xl lg:w-1/2 relative">
+                        <h2 className="text-2xl font-bold text-gray-800 dark:text-white md:text-3xl">Kandidat <span className="text-indigo-600 dark:text-indigo-400">{candidateName}</span></h2>
+                        <p className="mt-4 text-gray-600 dark:text-gray-400">{visiMisi}</p>
+
+                        <div className="mt-10">
+                            <a href={"#" + candidateNumber}
+                               className="px-5 py-2 font-semibold text-gray-100 transition-colors duration-200 transform bg-primary rounded hover:bg-primary-focus">Pilih Kandidat {candidateName}</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        )
+
+    }
+
+
     return (
         <DashboardPublic>
 
@@ -12,7 +36,7 @@ function Dashboard() {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#ffffff"
                          className="flex-shrink-0 w-6 h-6 mx-2">
                         <path strokeLinecap="round" strokeLinejoin="round" stroke-width="2"
-                              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
                     </svg>
                     <label>
                         <h4 className="font-bold text-white">Menunggu!</h4>
@@ -38,57 +62,19 @@ function Dashboard() {
                         </li>
                     </ul>
                 </div>
-                {activeStatus === 1 && <h1>Kandidat 1</h1>}
-                {activeStatus === 2 && <h1>Kandidat 2</h1>}
+                {activeStatus === 1 && <RenderCandidate
+                    visiMisi="Menjadi wadah yang aspiratif dan visioner guna terciptanya mahasiswa STKIP Muhammadiyah yang unggul dalam Pendidikan, Teknologi dan Kewirausahaan."
+                    candidateImage="https://i.ibb.co/GTwgFwH/IMG-5492-removebg-preview.png"
+                    candidateName="Satu"
+                    candidateNumber={1}
+                />}
+                {activeStatus === 2 && <RenderCandidate
+                    visiMisi="Mewujudkan BEM STKIP Muhammadiyah Kuningan sebagai Instansi yang Kreatif, Kritis, dan Intelektual (K2I), dalam pengembangan ilmu dan Teknologi yang berpedoman pada Al-Qur'an dan As-Sunnah dengan watak Tajdid."
+                    candidateImage="https://i.ibb.co/yY2PPgw/IMG-2923-removebg-preview.png"
+                    candidateName="Dua"
+                    candidateNumber={2}
+                />}
             </div>
-
-            {/*<div className="flex justify-center">*/}
-            {/*    <div className="flex flex-col lg:flex-row max-w-6xl">*/}
-
-            {/*        /!* card kandidat 1 *!/*/}
-            {/*        <div className="card shadow-sm bordered text-accent-content m-4 rounded">*/}
-            {/*            <figure>*/}
-            {/*                <img src="https://picsum.photos/id/1005/400/250"/>*/}
-            {/*            </figure>*/}
-            {/*            <div className="card-body">*/}
-            {/*                <h2 className="card-title">Nama Kandidat</h2>*/}
-            {/*                <div className="tabs">*/}
-            {/*                    <a className="tab tab-bordered tab-active">Visi</a>*/}
-            {/*                    <a className="tab tab-bordered">Misi</a>*/}
-            {/*                </div>*/}
-            {/*                <p>Rerum reiciendis beatae tenetur excepturi aut pariatur est eos. Sit sit*/}
-            {/*                    necessitatibus veritatis sed molestiae voluptates incidunt iure sapiente.</p>*/}
-            {/*                <div className="card-actions">*/}
-            {/*                    <button className="btn btn-primary btn-block rounded text-white">Pilih Kandidat*/}
-            {/*                    </button>*/}
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*        /!* card kandidat1 end *!/*/}
-
-            {/*        /!* card kandidat 2 *!/*/}
-            {/*        <div className="card shadow-sm bordered text-accent-content m-4 rounded">*/}
-            {/*            <figure>*/}
-            {/*                <img src="https://picsum.photos/id/1005/400/250"/>*/}
-            {/*            </figure>*/}
-            {/*            <div className="card-body">*/}
-            {/*                <h2 className="card-title">Nama Kandidat</h2>*/}
-            {/*                <div className="tabs">*/}
-            {/*                    <a className="tab tab-bordered tab-active">Visi</a>*/}
-            {/*                    <a className="tab tab-bordered">Misi</a>*/}
-            {/*                </div>*/}
-            {/*                <p>Rerum reiciendis beatae tenetur excepturi aut pariatur est eos. Sit sit*/}
-            {/*                    necessitatibus veritatis sed molestiae voluptates incidunt iure sapiente.</p>*/}
-            {/*                <div className="card-actions">*/}
-            {/*                    <button className="btn btn-primary btn-block rounded text-white">Pilih Kandidat*/}
-            {/*                    </button>*/}
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*        /!* card kandidat 2 end *!/*/}
-
-            {/*    </div>*/}
-            {/*</div>*/}
 
         </DashboardPublic>
     );
