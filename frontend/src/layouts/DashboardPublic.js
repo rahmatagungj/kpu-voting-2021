@@ -45,8 +45,10 @@ function DashboardPublic(props) {
                                         </svg>
                                     </button>
                                     <ul className="shadow menu dropdown-content bg-base-100 rounded w-52 text-black">
-                                        <li className="text-red-700">
+                                        <li className="text-black-700">
                                             <a href={"#modal-help"}><MdHelp className="mr-3"/> Bantuan</a>
+                                        </li>
+                                        <li className="text-red-700">
                                             <Link to="/login"><MdExitToApp className="mr-3"/>Keluar</Link>
                                         </li>
                                     </ul>
