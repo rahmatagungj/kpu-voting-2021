@@ -28,6 +28,7 @@ function Login(props) {
                             <h2 className="mt-6 text-3xl font-bold text-gray-900">
                                 Masuk
                             </h2>
+
                             <p className="mt-2 text-sm text-gray-500">Harap masuk untuk melanjutkan</p>
                         </div>
                         <form className="mt-8 space-y-6">
@@ -47,7 +48,7 @@ function Login(props) {
                             </div>
                             <div>
                                 <button type="submit"
-                                        className={isLoading ? "btn btn-primary btn-block loading rounded" : "btn btn-primary btn-block rounded"}
+                                        className={isLoading ? "btn btn-primary btn-block loading rounded shadow-md" : "btn btn-primary btn-block rounded shadow-md"}
                                         disabled={isLoading}
                                 onClick={HandleLogin}>
                                     Masuk
@@ -57,13 +58,12 @@ function Login(props) {
                     </div>
                 </div>
                 <div
-                    className="sm:w-1/2 xl:w-3/5 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden bg-purple-900 text-white bg-no-repeat bg-cover relative withBackground">
-                    <div className="absolute bg-gradient-to-b from-indigo-600 to-blue-500 opacity-75 inset-0 z-0"></div>
+                    className="sm:w-1/2 xl:w-3/5 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden bg-primary text-white bg-no-repeat bg-cover relative withBackground">
+                    <div className="absolute bg-primary opacity-75 inset-0 z-0"></div>
                     <div className="w-full  max-w-md z-10">
-                        <div className="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6">Komisi Pemilihan Umum
+                        <div className="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6">Pemilihan Umum Raya
                         </div>
-                        <div className="sm:text-sm xl:text-md text-gray-200 font-normal"> Apa aja pokoknya disini bakal disimpen
-                            keterangan soal KPUnya, supaya gak kosong juga.
+                        <div className="sm:text-sm xl:text-md text-gray-200 font-normal">Pemilihan presiden mahasiswa BEM STKIP Muhammadiyah Kuningan, 2021.
                         </div>
                     </div>
                 </div>
