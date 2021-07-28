@@ -2,23 +2,21 @@ import React, {useState} from 'react';
 import "./Login.css"
 import {useHistory} from "react-router-dom"
 
-function Login(props) {
+function Test(props) {
     const history = useHistory()
     const [isLoading, setIsLoading] = useState(false)
 
     const HandleLogin = () => {
         setIsLoading(true)
-        setTimeout(() => {
-            history.push("/dashboard")
-        },1000)
+        history.push("/dashboard")
     }
 
     return (
-        <div className="relative min-h-screen flex">
+        <div className="relative min-h-screen flex ">
             <div
-                className="flex sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 md:bg-white bg-primary bg-opacity-25">
+                className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 bg-white">
                 <div
-                    className="m-5 sm:m-0 md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full w-2/6 xl:w-2/6 p-8 md:p-10 lg:p-14 rounded md:rounded-none bg-white shadow-lg z-10">
+                    className="md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full w-2/6 xl:w-2/6 p-8  md:p-10 lg:p-14 sm:rounded-lg md:rounded-none bg-white">
 
                     <div className="max-w-md w-full space-y-8">
                         <div className="text-center">
@@ -27,7 +25,8 @@ function Login(props) {
                             </h2>
                             <p className="mt-2 text-sm text-gray-500">Harap masuk untuk melanjutkan</p>
                         </div>
-                        <form className="mt-8 space-y-6">
+                        <form className="mt-8 space-y-6" onSubmit={HandleLogin}>
+                            <input type="hidden" name="remember" value="true"/>
                             <div className="relative">
                                 <label className="ml-3 text-sm font-bold text-gray-700 tracking-wide">Email</label>
                                 <input
@@ -44,9 +43,8 @@ function Login(props) {
                             </div>
                             <div>
                                 <button type="submit"
-                                        className={isLoading ? "btn btn-primary btn-block loading rounded" : "btn btn-primary btn-block rounded"}
-                                        disabled={isLoading}
-                                onClick={HandleLogin}>
+                                        className={isLoading ? "btn btn-info btn-block loading" : "btn btn-info btn-block"}
+                                        disabled={isLoading}>
                                     Masuk
                                 </button>
                             </div>
@@ -63,22 +61,23 @@ function Login(props) {
                             keterangan soal KPUnya, supaya gak kosong juga.
                         </div>
                     </div>
+                    <ul className="circles">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
                 </div>
-                <ul className="circles z-0">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
+
             </div>
         </div>
     );
 }
 
-export default Login;
+export default Test;
