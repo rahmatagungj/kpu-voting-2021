@@ -18,7 +18,7 @@ function DashboardAdmin(props) {
       <div className="shadow-lg bg-base-200 drawer drawer-mobile h-screen">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="flex flex-col drawer-content">
-          <header className="bg-primary w-full h-16 z-40 flex items-center justify-between sticky top-0 z-50 shadow-sm sm:shadow-none p-2">
+          <header className="bg-primary w-full h-13 z-40 flex items-center justify-between sticky top-0 z-50 shadow-sm sm:shadow-none p-2">
             <div className="block lg:hidden ml-6">
               <label htmlFor="my-drawer-2" className="cursor-pointer flex p-2 items-center rounded-full text-gray-400 hover:text-gray-700 bg-white shadow text-md drawer-button lg:hidden">
                 <svg width="20" height="20" className="text-gray-400 hover:text-gray-700" fill="currentColor" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
@@ -28,12 +28,6 @@ function DashboardAdmin(props) {
             </div>
             <div className="relative z-20 flex flex-col justify-end h-full px-3 md:w-full">
               <div className="relative p-1 flex items-center w-full space-x-4 justify-end">
-                <a href={"#modal-help"}>
-                  <button className="flex p-1 items-center rounded-full bg-white shadow text-gray-400 hover:text-gray-700 text-lg">
-                    <MdHelp size={30} />
-                  </button>
-                </a>
-                <span className="w-1 h-8 rounded-lg bg-gray-200" />
                 <div className="dropdown dropdown-end">
                   <button className="flex items-center text-white dark:text-white text-md" tabIndex={0}>
                     Rahmat AJ
@@ -43,6 +37,7 @@ function DashboardAdmin(props) {
                   </button>
                   <ul className="shadow menu dropdown-content bg-base-100 rounded w-52 text-black">
                     <li className="text-red-700">
+                      <a href={"#modal-help"}><MdHelp className="mr-3"/> Bantuan</a>
                       <Link to="/admin">
                         <MdExitToApp className="mr-3" />
                         Keluar
