@@ -41,7 +41,7 @@ function Dashboard() {
                     <label>
                         <h4 className="font-bold text-white">Menunggu!</h4>
                         <p className="text-sm text-opacity-90 text-white">
-                           Pemilihan belum dapat dilakukan saat ini, harap menunggu hingga pemungutan suara dibuka.
+                            Pemilihan belum dapat dilakukan saat ini, harap menunggu hingga pemungutan suara dibuka.
                         </p>
                     </label>
                 </div>
