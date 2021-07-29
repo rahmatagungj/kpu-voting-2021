@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import "./Login.css"
 import {useHistory} from "react-router-dom"
+import Seo from "../components/Seo"
+import {Link} from "react-router-dom"
+import { MdKeyboardArrowLeft } from "react-icons/md";
 
 function Login(props) {
     const history = useHistory()
@@ -14,7 +17,9 @@ function Login(props) {
     }
 
     return (
-        <div className="relative min-h-screen flex">
+        <>
+            <Seo title={"Masuk"}/>
+        <div className="relative min-h-screen flex withBackground">
             <div
                 className="flex sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 md:bg-white bg-primary bg-opacity-25">
                 <div
@@ -25,6 +30,7 @@ function Login(props) {
                             <h2 className="mt-6 text-3xl font-bold text-gray-900">
                                 Masuk
                             </h2>
+
                             <p className="mt-2 text-sm text-gray-500">Harap masuk untuk melanjutkan</p>
                         </div>
                         <form className="mt-8 space-y-6">
@@ -32,7 +38,7 @@ function Login(props) {
                                 <label className="ml-3 text-sm font-bold text-gray-700 tracking-wide">Email</label>
                                 <input
                                     className=" w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded focus:border-indigo-500"
-                                    type="" placeholder="mail@gmail.com"/>
+                                    type="" placeholder="email@mhs.upmk.ac.id"/>
                             </div>
                             <div className="mt-8 content-center">
                                 <label className="ml-3 text-sm font-bold text-gray-700 tracking-wide">
@@ -42,25 +48,28 @@ function Login(props) {
                                     className="w-full content-center text-base px-4 py-2 border-b rounded border-gray-300 focus:outline-none focus:border-indigo-500"
                                     type="" placeholder="masukan kata sandi"/>
                             </div>
-                            <div>
+                            <div className="flex flex-col">
                                 <button type="submit"
-                                        className={isLoading ? "btn btn-primary btn-block loading rounded" : "btn btn-primary btn-block rounded"}
+                                        className={isLoading ? "btn btn-primary btn-block loading rounded shadow-md" : "btn btn-primary btn-block rounded shadow-md"}
                                         disabled={isLoading}
                                 onClick={HandleLogin}>
                                     Masuk
                                 </button>
+
+                                <p className="text-sm text-primary mt-5">
+                                    <Link to={"/"} className={"flex items-center"}><MdKeyboardArrowLeft className={"mr-1"}/>Beranda</Link>
+                                </p>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div
-                    className="sm:w-1/2 xl:w-3/5 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden bg-purple-900 text-white bg-no-repeat bg-cover relative withBackground">
-                    <div className="absolute bg-gradient-to-b from-indigo-600 to-blue-500 opacity-75 inset-0 z-0"></div>
+                    className="sm:w-1/2 xl:w-3/5 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden bg-primary text-white bg-no-repeat bg-cover relative withBackground">
+                    <div className="absolute bg-primary opacity-75 inset-0 z-0"></div>
                     <div className="w-full  max-w-md z-10">
-                        <div className="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6">Komisi Pemilihan Umum
+                        <div className="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6">Pemilihan Umum Raya
                         </div>
-                        <div className="sm:text-sm xl:text-md text-gray-200 font-normal"> Apa aja pokoknya disini bakal disimpen
-                            keterangan soal KPUnya, supaya gak kosong juga.
+                        <div className="sm:text-sm xl:text-md text-gray-200 font-normal">Pemilihan presiden mahasiswa BEM STKIP Muhammadiyah Kuningan, 2021.
                         </div>
                     </div>
                 </div>
@@ -78,6 +87,7 @@ function Login(props) {
                 </ul>
             </div>
         </div>
+        </>
     );
 }
 
