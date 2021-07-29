@@ -11,6 +11,7 @@ import AdminLogin from "./pages/AdminLogin";
 import Test from "./pages/Test";
 import InformationPublic from "./pages/InformationPublic";
 import InformationAdmin from "./pages/InformationAdmin";
+import AdminVoteData from "./pages/AdminVoteData"
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <Route path="/admin" component={AdminLogin} exact/>
               <Route path="/admin/dashboard" component={AdminDashboard} exact/>
               <Route path="/admin/dashboard/information" component={InformationAdmin} exact/>
+              <Route path="/admin/dashboard/data" component={AdminVoteData} exact/>
           </Switch>
       </Router>
   );

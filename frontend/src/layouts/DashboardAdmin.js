@@ -77,7 +77,7 @@ function DashboardAdmin(props) {
                                 </Link>
                                 <Link
                                     className="w-full text-gray-800 dark:text-white flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start"
-                                    to="/admin/dashboard">
+                                    to="/admin/dashboard/data">
                                     <MdWork size={20}/>
                                     <span className="mx-2 text-sm font-normal">Data Pemilihan</span>
                                 </Link>
@@ -85,7 +85,7 @@ function DashboardAdmin(props) {
                                     className="w-full text-gray-800 dark:text-white flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start"
                                     to="/admin/dashboard/information">
                                     <MdInfo size={20}/>
-                                    <span className="mx-2 text-sm font-normal">Informasi Pemilihan</span>
+                                    <span className="mx-2 text-sm font-normal">Informasi Admin</span>
                                 </Link>
                             </div>
                         </nav>
