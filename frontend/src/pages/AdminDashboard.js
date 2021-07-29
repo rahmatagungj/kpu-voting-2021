@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import DashboardAdmin from "../layouts/DashboardAdmin";
 import Seo from "../components/Seo"
+import Spinner from "../components/Spinner"
 import axios from "axios"
 
 const people = [
@@ -16,7 +17,7 @@ const people = [
 function AdminDashboard() {
     const [countVoteOne, setCountVoteOne] = useState(0)
     const [countVoteTwo, setCountVoteTwo] = useState(0)
-    const [isLoading, setIsloading] = useState(false)
+    const [isLoading, setIsloading] = useState(true)
 
     const getAllData = async () => {
         setIsloading(true)
@@ -48,9 +49,9 @@ function AdminDashboard() {
                             </div>
                         </div>
                         <div
-                            className="stat-value">{isLoading ? "0 " :countVoteOne} %
+                            className="stat-value">{countVoteOne} %
                         </div>
-                        <div className="stat-title">{isLoading ? "0 " : countVoteOne} Suara</div>
+                        <div className="stat-title">{countVoteOne} Suara</div>
                         <div className="stat-desc">Handika Rahmat Utama & Muhammad Abdul Aziz</div>
                     </div>
                     <div className="stat">
@@ -63,9 +64,9 @@ function AdminDashboard() {
                             </div>
                         </div>
                         <div
-                            className="stat-value">{isLoading ? "0 " : countVoteTwo} %
+                            className="stat-value">{countVoteTwo} %
                         </div>
-                        <div className="stat-title">{isLoading ? "0 " : countVoteTwo} Suara</div>
+                        <div className="stat-title">{countVoteTwo} Suara</div>
                         <div className="stat-desc">Pitradi & Robi Iskandar</div>
                     </div>
                 </div>
@@ -76,7 +77,7 @@ function AdminDashboard() {
     return (
         <DashboardAdmin>
             <Seo title={"Beranda Pengurus"}/>
-            <RenderStat/>
+            {isLoading ? <Spinner/> : <RenderStat/>}
         </DashboardAdmin>
     );
 }
