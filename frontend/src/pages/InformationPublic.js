@@ -10,7 +10,7 @@ function InformationPublic() {
                 <h3 className="text-base font-bold text-primary">Informasi Pemilihan</h3>
                 <hr className="my-5"/>
                 <div className="mx-auto container flex w-full  px-5">
-                    <ul class="list-decimal">
+                    <ul className="list-decimal">
                         <li>Pemungutan suara dilaksanakan mulai pukul 08.00 sampai dengan 20.00 WIB.</li>
                         <li>Pemungutan suara dilakukan secara serentak melalui website.</li>
                         <li>Pemungutan suara dilakukan dengan ketentuan sebagai berikut:</li>
