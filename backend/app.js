@@ -1,24 +1,35 @@
-const Express = require("express");
-const BodyParser = require("body-parser");
-const MongoClient = require("mongodb").MongoClient;
-const ObjectId = require("mongodb").ObjectID;
 const CONNECTION_URL = "mongodb+srv://rahmatagungj:1010123@cluster0.7sail.mongodb.net/Cluster0?retryWrites=true&w=majority";
 const DATABASE_NAME = "kpu-stkip-2021";
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
+const app = express();
+const apiRoutes = require("./api-routes");
 
-var app = Express();
-app.use(BodyParser.json());
-app.use(BodyParser.urlencoded({ extended: true }));
-var database, collection;
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 
-app.listen(5000, () => {
-    MongoClient.connect(CONNECTION_URL, { useNewUrlParser: true }, (error, client) => {
-        if(error) {
-            throw error;
-        }
-        database = client.db(DATABASE_NAME);
-        collection = database.collection("system");
-        console.log(collection)
-        console.log("Connected to `" + DATABASE_NAME + "`!");
-    });
+mongoose.connect(CONNECTION_URL, { useNewUrlParser: true});
+
+var db = mongoose.DATABASE_NAME;
+
+if(!db)
+    console.log("Error connecting db")
+else
+    console.log("Db connected successfully")
+
+// Setup server port
+var port = process.env.PORT || 3001;
+
+// Send message for default URL
+app.get('/', (req, res) => res.send('Hello Duded, Math Here ...'));
+
+// Use Api routes in the App
+app.use('/api', apiRoutes);
+// Launch app to listen to specified port
+app.listen(port, function () {
+    console.log("Running RestHub on port " + port);
 });
