@@ -3,22 +3,36 @@ import DashboardAdmin from "../layouts/DashboardAdmin";
 import Seo from "../components/Seo"
 import axios from "axios"
 
+const people = [
+    {
+        nim: '1234',
+        name: 'Rahmat Agung Julians',
+        date: "29-07-2021",
+        email: 'rahmatagungj@example.com'
+        },
+    // More people...
+]
+
 function AdminDashboard() {
     const [countVoteOne, setCountVoteOne] = useState(0)
     const [countVoteTwo, setCountVoteTwo] = useState(0)
     const [isLoading, setIsloading] = useState(false)
 
-    useEffect(() => {
+    const getAllData = async () => {
         setIsloading(true)
-        axios.get('https://kpu-stkip.azurewebsites.net/api/vote/count/1')
+        await axios.get('https://kpu-stkip.azurewebsites.net/api/vote/count/1')
             .then(response => setCountVoteOne(response.data.message))
             .catch((e) => setCountVoteOne("Error"));
-        axios.get('https://kpu-stkip.azurewebsites.net/api/vote/count/2')
+        await axios.get('https://kpu-stkip.azurewebsites.net/api/vote/count/2')
             .then(response => setCountVoteTwo(response.data.message))
             .catch((e) => setCountVoteTwo("Error"));
         setIsloading(false)
+    }
 
+    useEffect(() => {
+        getAllData()
     }, [])
+
 
     const RenderStat = () => {
         return (
@@ -34,10 +48,10 @@ function AdminDashboard() {
                             </div>
                         </div>
                         <div
-                            className="stat-value">{isLoading ? "Memuat " :countVoteOne} %
+                            className="stat-value">{isLoading ? "0 " :countVoteOne} %
                         </div>
-                        <div className="stat-title">{isLoading ? "Memuat " : countVoteOne} Suara</div>
-                        <div className="stat-title">Handika Rahmat Utama & Muhammad Abdul Aziz</div>
+                        <div className="stat-title">{isLoading ? "0 " : countVoteOne} Suara</div>
+                        <div className="stat-desc">Handika Rahmat Utama & Muhammad Abdul Aziz</div>
                     </div>
                     <div className="stat">
                         <div className="stat-figure text-info">
@@ -49,20 +63,20 @@ function AdminDashboard() {
                             </div>
                         </div>
                         <div
-                            className="stat-value">{isLoading ? "Memuat " : countVoteTwo} %
+                            className="stat-value">{isLoading ? "0 " : countVoteTwo} %
                         </div>
-                        <div className="stat-title">{isLoading ? "Memuat " : countVoteTwo} Suara</div>
-                        <div className="stat-title">Pitradi & Robi Iskandar</div>
+                        <div className="stat-title">{isLoading ? "0 " : countVoteTwo} Suara</div>
+                        <div className="stat-desc">Pitradi & Robi Iskandar</div>
                     </div>
                 </div>
             </div>
         )
     }
+
     return (
         <DashboardAdmin>
             <Seo title={"Beranda Pengurus"}/>
             <RenderStat/>
-            Admin
         </DashboardAdmin>
     );
 }
