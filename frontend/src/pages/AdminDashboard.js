@@ -3,28 +3,27 @@ import DashboardAdmin from "../layouts/DashboardAdmin";
 import Seo from "../components/Seo"
 import Spinner from "../components/Spinner"
 import axios from "axios"
+import {apiOptions} from "../data/apiData"
 
-const people = [
-    {
-        nim: '1234',
-        name: 'Rahmat Agung Julians',
-        date: "29-07-2021",
-        email: 'rahmatagungj@example.com'
-        },
-    // More people...
-]
+function getPercentage(countVote, totalVote) {
+    return (countVote / totalVote) * 100;
+}
 
 function AdminDashboard() {
     const [countVoteOne, setCountVoteOne] = useState(0)
     const [countVoteTwo, setCountVoteTwo] = useState(0)
+    const [totalVote, setTotalVote] = useState(0)
     const [isLoading, setIsloading] = useState(true)
 
     const getAllData = async () => {
         setIsloading(true)
-        await axios.get('https://kpu-stkip.azurewebsites.net/api/vote/count/1')
+        await axios.get('https://kpu-stkip.azurewebsites.net/api/vote/',apiOptions)
+            .then(response => setTotalVote((response.data.data).length))
+            .catch((e) => setTotalVote(0));
+        await axios.get('https://kpu-stkip.azurewebsites.net/api/vote/count/1',apiOptions)
             .then(response => setCountVoteOne(response.data.message))
             .catch((e) => setCountVoteOne("Error"));
-        await axios.get('https://kpu-stkip.azurewebsites.net/api/vote/count/2')
+        await axios.get('https://kpu-stkip.azurewebsites.net/api/vote/count/2',apiOptions)
             .then(response => setCountVoteTwo(response.data.message))
             .catch((e) => setCountVoteTwo("Error"));
         setIsloading(false)
@@ -49,7 +48,7 @@ function AdminDashboard() {
                             </div>
                         </div>
                         <div
-                            className="stat-value">{countVoteOne} %
+                            className="stat-value">{getPercentage(countVoteOne, totalVote).toString()}%
                         </div>
                         <div className="stat-title">{countVoteOne} Suara</div>
                         <div className="stat-desc">Handika Rahmat Utama & Muhammad Abdul Aziz</div>
@@ -64,7 +63,7 @@ function AdminDashboard() {
                             </div>
                         </div>
                         <div
-                            className="stat-value">{countVoteTwo} %
+                            className="stat-value">{getPercentage(countVoteTwo, totalVote).toString()}%
                         </div>
                         <div className="stat-title">{countVoteTwo} Suara</div>
                         <div className="stat-desc">Pitradi & Robi Iskandar</div>

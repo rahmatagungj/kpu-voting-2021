@@ -1,3 +1,4 @@
+import React, {useState} from 'react'
 import {
     BrowserRouter as Router,
     Switch,
@@ -12,23 +13,31 @@ import Test from "./pages/Test";
 import InformationPublic from "./pages/InformationPublic";
 import InformationAdmin from "./pages/InformationAdmin";
 import AdminVoteData from "./pages/AdminVoteData"
+import AdminDataDpt from "./pages/AdminDataDpt"
+import UserContext from "./contexts/userContext";
+import PrivateRoute from "./PrivateRoute";
 
 function App() {
-  return (
-      <Router>
-          <Switch>
-              <Route path="/" component={Home} exact/>
-              <Route path="/test" component={Test} exact/>
-              <Route path="/login" component={Login} exact/>
-              <Route path="/dashboard" component={Dashboard} exact/>
-              <Route path="/dashboard/information" component={InformationPublic} exact/>
-              <Route path="/admin" component={AdminLogin} exact/>
-              <Route path="/admin/dashboard" component={AdminDashboard} exact/>
-              <Route path="/admin/dashboard/information" component={InformationAdmin} exact/>
-              <Route path="/admin/dashboard/data" component={AdminVoteData} exact/>
-          </Switch>
-      </Router>
-  );
+    const [userData, setUserData] = useState(null)
+
+    return (
+        <UserContext.Provider value={[userData, setUserData]}>
+            <Router>
+                <Switch>
+                    <Route path="/" component={Home} exact/>
+                    <Route path="/test" component={Test} exact/>
+                    <Route path="/login" component={Login} exact/>
+                    <PrivateRoute path="/dashboard" component={Dashboard} exact/>
+                    <PrivateRoute path="/dashboard/information" component={InformationPublic} exact/>
+                    <Route path="/admin" component={AdminLogin} exact/>
+                    <Route path="/admin/dashboard" component={AdminDashboard} exact/>
+                    <Route path="/admin/dashboard/information" component={InformationAdmin} exact/>
+                    <Route path="/admin/dashboard/data" component={AdminVoteData} exact/>
+                    <Route path="/admin/dashboard/dpt" component={AdminDataDpt} exact/>
+                </Switch>
+            </Router>
+        </UserContext.Provider>
+    );
 }
 
 export default App;

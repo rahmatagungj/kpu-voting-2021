@@ -1,14 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import DashboardAdmin from "../layouts/DashboardAdmin";
+import moment from 'moment'
+import 'moment/locale/id';
+import {apiOptions} from "../data/apiData"
 
 function AdminVoteData() {
     const [totalVote, setTotalVote] = useState(null)
     const [isLoading, setIsloading] = useState(false)
+    const [canShowVote, setCanShowVote] = useState(true)
 
     const getAllData = async () => {
         setIsloading(true)
-        await axios.get('https://kpu-stkip.azurewebsites.net/api/vote')
+        await axios.get('https://kpu-stkip.azurewebsites.net/api/vote',apiOptions)
             .then(response => setTotalVote(response.data.data))
             .catch((e) => setTotalVote("Error"));
         setIsloading(false)
@@ -19,7 +23,7 @@ function AdminVoteData() {
     }, [])
 
     const handleDeleteVote = async (nim) => {
-        axios.delete('https://kpu-stkip.azurewebsites.net/api/vote/' + nim)
+        axios.delete('https://kpu-stkip.azurewebsites.net/api/vote/' + nim,apiOptions)
             .then(response => {
                 const newTotalVote = totalVote.filter(vote => vote.nim !== nim)
                 setTotalVote(newTotalVote);
@@ -31,7 +35,7 @@ function AdminVoteData() {
         return (
             <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                    <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                    <div className="shadow overflow-hidden border-b border-gray-200 rounded">
                         <table className="min-w-full divide-y divide-gray-200">
                             <thead className="bg-secondary">
                             <tr>
@@ -47,6 +51,14 @@ function AdminVoteData() {
                                 >
                                     Status
                                 </th>
+                                {canShowVote && (
+                                    <th
+                                        scope="col"
+                                        className="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider"
+                                    >
+                                        Memilih
+                                    </th>
+                                )}
                                 <th
                                     scope="col"
                                     className="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider"
@@ -68,7 +80,7 @@ function AdminVoteData() {
                                 <tr key={vote.nim}>
                                     <td className="px-6 py-4 whitespace-nowrap">
                                         <div className="flex items-center">
-                                            <div className="ml-4">
+                                            <div>
                                                 <div className="text-sm font-medium text-gray-900">{vote.name}</div>
                                                 <div className="text-sm text-gray-500">{vote.email}</div>
                                             </div>
@@ -80,7 +92,11 @@ function AdminVoteData() {
                         Sudah Memilih
                       </span>
                                     </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{vote.create_date}</td>
+                                    {canShowVote && (
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Calon {vote.vote_to}</td>
+
+                                    )}
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{moment(vote.create_date).locale('id').format('LLLL')} WIB</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <a href={"#" + vote.nim} className="text-indigo-600 hover:text-indigo-900"
                                            onClick={() => handleDeleteVote(vote.nim)}>

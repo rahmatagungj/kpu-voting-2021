@@ -1,56 +1,83 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import DashboardPublic from "../layouts/DashboardPublic";
 import Seo from "../components/Seo"
 import Spinner from "../components/Spinner"
 import axios from 'axios'
+import UserContext from "../contexts/userContext";
+import Swal from 'sweetalert2'
+import moment from 'moment'
+import 'moment/locale/id';
+import {apiOptions} from "../data/apiData"
 
 function Dashboard() {
     const [activeStatus, setActiveStatus] = useState(1)
     const [firstIsLoading, setFirstIsLoading] = useState(true)
     const [isLoading, setIsLoading] = useState(false)
     const [isVoted, setIsVoted] = useState(false)
-    const [candidateVoted, setCandidateVoted] = useState(0)
+    const [userData, setUserData] = useContext(UserContext)
+    const [userVoteData, setUserVoteData] = useState(null)
+
+    const getVoteData = () => {
+        axios.get(`https://kpu-stkip.azurewebsites.net/api/vote/${userData.nim}`,apiOptions)
+            .then(response => {
+                if (response.data.data.length > 0) {
+                    setUserVoteData(response.data.data[0])
+                    setIsVoted(true)
+                } else {
+                    setIsVoted(false)
+                }
+                setFirstIsLoading(false)
+            })
+            .catch((e) => Swal.fire({
+                title: 'OOPS',
+                text: 'Terjadi kesalahan pada sistem, harap hubungi pengembang.',
+                icon: 'warning',
+                confirmButtonText: 'Tutup'
+            }));
+    }
 
     const HandleVote = (candidateNumber) => {
         setIsLoading(true)
         const toBeVote = {
-            nim: '123',
-            name: "Test 1",
-            email: "Test1@gmail.com",
+            nim: userData.nim,
+            name: userData.name,
+            email: userData.email,
             vote_to: parseInt(candidateNumber)
         };
 
-        axios.post('https://kpu-stkip.azurewebsites.net/api/vote', new URLSearchParams(toBeVote))
+        axios.post('https://kpu-stkip.azurewebsites.net/api/vote', new URLSearchParams(toBeVote),apiOptions)
             .then(response => {
                 if (response.data.message === "New vote created!") {
-                    console.log("Berhasil")
-                    setCandidateVoted(candidateNumber)
-                    setIsVoted(true)
+                    Swal.fire({
+                        title: 'BERHASIL',
+                        text: `Anda berhasil memilih calon dengan nomor urut ${candidateNumber}`,
+                        icon: 'success',
+                        confirmButtonText: 'Tutup'
+                    })
+                    getVoteData()
                 } else {
-                    console.log("Gagal")
+                    Swal.fire({
+                        title: 'GAGAL',
+                        text: `Anda gagal memilih calon dengan nomor urut ${candidateNumber}, harap coba lagi.`,
+                        icon: 'error',
+                        confirmButtonText: 'Tutup'
+                    })
                 }
                 setIsLoading(false)
             })
             .catch(error => {
-                console.error('There was an error!', error);
+                Swal.fire({
+                    title: 'OOPS',
+                    text: 'Terjadi kesalahan pada sistem, harap hubungi pengembang.',
+                    icon: 'warning',
+                    confirmButtonText: 'Tutup'
+                })
                 setIsLoading(false)
             });
     }
 
     useEffect(() => {
-        axios.get('https://kpu-stkip.azurewebsites.net/api/vote/123')
-            .then(response => {
-                if (response.data.data.length > 0) {
-                    console.log("Sudah vote ke", response.data.data[0].vote_to)
-                    setCandidateVoted(response.data.data[0].vote_to)
-                    setIsVoted(true)
-                } else {
-                    console.log("Belum vote")
-                    setIsVoted(false)
-                }
-                setFirstIsLoading(false)
-            })
-            .catch((e) => console.error(e));
+        getVoteData()
     }, [])
 
     const RenderCandidate = ({candidateName, candidateImage, visiMisi, candidateNumber, candidatePersonName}) => {
@@ -79,28 +106,49 @@ function Dashboard() {
 
     }
 
+    const RenderLogVote = () => {
+        return (
+            <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 mb-5">
+                <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                    <div className="overflow-hidden border-b border-gray-200 rounded">
+                        <table className="min-w-full divide-y divide-gray-200">
+                            <thead className="bg-secondary">
+                            <tr>
+                                <th
+                                    scope="col"
+                                    className="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider"
+                                >
+                                    Informasi Pemilihan
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody className="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td className="px-6 py-4 whitespace-wrap">
+                                    <div className="flex items-center">
+                                        <div>
+                                            <div className="text-sm font-medium text-gray-900">{userVoteData.name}</div>
+                                            <div className="text-sm text-gray-500">{userVoteData.email}</div>
+                                            <div className="text-sm text-gray-500">Memilih nomor
+                                                urut {userVoteData.vote_to} pada {moment(userVoteData.create_date).locale('id').format('LLLL')} WIB</div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     const RenderBody = () => {
         return (
             <>
-                {/*Alert Voted*/}
-                {isVoted && (
-                    <div className="alert alert-info mb-5 bg-accent rounded">
-                        <div className="flex-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#ffffff"
-                                 className="flex-shrink-0 w-6 h-6 mx-2">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                      d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-                            </svg>
-                            <label>
-                                <h4 className="font-bold text-white">Berhasil Memilih!</h4>
-                                <p className="text-sm text-opacity-90 text-white">
-                                    Anda sudah memilih pasangan dengan nomor urut {candidateVoted}
-                                </p>
-                            </label>
-                        </div>
-                    </div>
-                )}
-                {/*End Alert Voted*/}
+                {/* Notification if use is voted */}
+                {userVoteData && <RenderLogVote/>}
+                {/* end notification for voted */}
 
                 {/* dashboard */}
                 <div className="border-t-4 border-primary bg-white p-5 rounded">
@@ -136,6 +184,7 @@ function Dashboard() {
             </>
         )
     }
+
 
     return (
         <DashboardPublic>
