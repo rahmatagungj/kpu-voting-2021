@@ -4,6 +4,7 @@ import Seo from "../components/Seo"
 import Spinner from "../components/Spinner"
 import axios from "axios"
 import {apiOptions} from "../data/apiData"
+import {Pie,Bar} from 'react-chartjs-2';
 
 function getPercentage(countVote, totalVote) {
     return (countVote / totalVote) * 100;
@@ -14,16 +15,26 @@ function AdminDashboard() {
     const [countVoteTwo, setCountVoteTwo] = useState(0)
     const [totalVote, setTotalVote] = useState(0)
     const [isLoading, setIsloading] = useState(true)
+    const [voteData, setVoteData] = useState(null)
+    const [totalDpt, setTotalDpt] = useState(0)
 
     const getAllData = async () => {
         setIsloading(true)
-        await axios.get('https://kpu-stkip.azurewebsites.net/api/vote/',apiOptions)
-            .then(response => setTotalVote((response.data.data).length))
+        await axios.get('https://kpu-stkip.azurewebsites.net/api/vote/', apiOptions)
+            .then(response => {
+                setVoteData(response.data.data)
+                setTotalVote((response.data.data).length)
+            })
             .catch((e) => setTotalVote(0));
-        await axios.get('https://kpu-stkip.azurewebsites.net/api/vote/count/1',apiOptions)
+        await axios.get('http://siamik.upmk.ac.id/apijson.php?method=dpt&secret_key=365rywegf23987439857h&client_key=rahmatagungjulians')
+            .then(response => {
+                setTotalDpt((response.data).length)
+            })
+            .catch((e) => setTotalVote(0));
+        await axios.get('https://kpu-stkip.azurewebsites.net/api/vote/count/1', apiOptions)
             .then(response => setCountVoteOne(response.data.message))
             .catch((e) => setCountVoteOne("Error"));
-        await axios.get('https://kpu-stkip.azurewebsites.net/api/vote/count/2',apiOptions)
+        await axios.get('https://kpu-stkip.azurewebsites.net/api/vote/count/2', apiOptions)
             .then(response => setCountVoteTwo(response.data.message))
             .catch((e) => setCountVoteTwo("Error"));
         setIsloading(false)
@@ -33,6 +44,56 @@ function AdminDashboard() {
         getAllData()
     }, [])
 
+
+    const dataChart1 = {
+        labels: ['Calon 1', 'Calon 2'],
+        datasets: [
+            {
+                label: '# of Votes',
+                data: [countVoteOne, countVoteTwo],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                ],
+                borderWidth: 1,
+            },
+        ],
+    };
+
+    const dataChart2 = {
+        labels: ["Sudah Memilih","Belum Memilih"],
+        datasets: [
+            {
+                label: 'Total Pemilihan',
+                data: [parseInt(totalVote), parseInt(totalDpt)-parseInt(totalVote)],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                ],
+                borderWidth: 1,
+            },
+        ],
+    };
+
+    const dataChart2Options = {
+        scales: {
+            yAxes: [
+                {
+                    ticks: {
+                        beginAtZero: true,
+                    },
+                },
+            ],
+        },
+    };
 
     const RenderStat = () => {
         return (
@@ -77,6 +138,24 @@ function AdminDashboard() {
         <DashboardAdmin>
             <Seo title={"Beranda Pengurus"}/>
             {isLoading ? <Spinner/> : <RenderStat/>}
+            {!isLoading && (
+                <div className="flex flex-col md:flex-row">
+                    <div className="container border-t-4 border-primary bg-white p-5 rounded w-full md:max-w-sm mr-0 md:mr-5 my-2">
+                        <h3 className="text-base font-bold text-primary">Statistik Pemilihan</h3>
+                        <hr className="my-5"/>
+                        <div className="mx-auto container flex w-md px-5">
+                            <Pie data={dataChart1}/>
+                        </div>
+                    </div>
+                    <div className="container border-t-4 border-primary bg-white p-5 rounded w-full md:max-w-sm my-5 md:my-2">
+                        <h3 className="text-base font-bold text-primary">Statistik Pemilihan</h3>
+                        <hr className="my-5"/>
+                        <div className="mx-auto container flex w-md px-5">
+                            <Bar data={dataChart2} options={dataChart2Options}/>
+                        </div>
+                    </div>
+                </div>
+            )}
         </DashboardAdmin>
     );
 }

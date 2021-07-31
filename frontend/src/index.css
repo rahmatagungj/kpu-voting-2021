@@ -19,3 +19,7 @@ code {
 html {
   scroll-behavior: smooth;
 }
+
+.swal-modal .swal-text {
+  text-align: left;
+}

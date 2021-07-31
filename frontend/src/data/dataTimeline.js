@@ -40,15 +40,15 @@ export const dataTimeline = [
         details: "Pemungutan Suara Presiden dan Wakil Presiden BEM"
     },
     {
-        date: "16 Agustus",
-        details: "Sosialisasi hasil pemilihan Umum Raya 2021"
+        date: "11 Agustus",
+        details: "Rekapitulasi dan Penetapan hasil perhitungan suara"
     },
     {
         date: "12 - 14 Agustus",
         details: "Pengajuan gugatan"
     },
     {
-        date: "11 Agustus",
-        details: "Rekapitulasi dan Penetapan hasil perhitungan suara"
+        date: "16 Agustus",
+        details: "Sosialisasi hasil pemilihan Umum Raya 2021"
     },
 ]

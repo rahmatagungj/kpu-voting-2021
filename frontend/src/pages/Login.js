@@ -1,10 +1,9 @@
 import React, {useState, useContext} from 'react';
 import "./Login.css"
-import {useHistory} from "react-router-dom"
+import {Link,useHistory} from "react-router-dom"
 import Seo from "../components/Seo"
 import axios from "axios"
 import MD5 from "crypto-js/md5";
-import {Link} from "react-router-dom"
 import {MdKeyboardArrowLeft} from "react-icons/md";
 import UserContext from "../contexts/userContext";
 import Swal from 'sweetalert2'
@@ -31,7 +30,8 @@ function Login() {
                         title: 'GAGAL',
                         text: 'Harap periksa alamat surel dan kata sandi anda.',
                         icon: 'error',
-                        confirmButtonText: 'Tutup'
+                        confirmButtonText: 'Tutup',
+                        confirmButtonColor: '#014E87'
                     })
                     setIsLoading(false)
                 }
@@ -41,7 +41,8 @@ function Login() {
                     title: 'OOPS',
                     text: 'Terjadi kesalahan pada sistem, harap hubungi pengembang.',
                     icon: 'warning',
-                    confirmButtonText: 'Tutup'
+                    confirmButtonText: 'Tutup',
+                    confirmButtonColor: '#014E87'
                 })
                 setIsLoading(false)
             });
@@ -64,8 +65,6 @@ function Login() {
 
                                 <p className="mt-2 text-sm text-gray-500">Harap masuk untuk melanjutkan</p>
                             </div>
-                            <p> 191223045@mhs.upmk.ac.id : 45967805</p>
-                            <p> 204223032@mhs.upmk.ac.id : 66841987</p>
                             <form className="mt-8 space-y-6">
                                 <div className="relative">
                                     <label className="ml-3 text-sm font-bold text-gray-700 tracking-wide">Alamat
@@ -81,7 +80,7 @@ function Login() {
                                     </label>
                                     <input
                                         className="w-full content-center text-base px-4 py-2 border-b rounded border-gray-300 focus:outline-none focus:border-indigo-500"
-                                        type="" placeholder="masukan kata sandi"
+                                        type="password" placeholder="masukan kata sandi"
                                         onChange={(e) => setPassword(e.target.value)}/>
                                 </div>
                                 <div className="flex flex-col">

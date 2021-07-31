@@ -1,20 +1,19 @@
-import React from "react";
+import React, {useContext} from "react";
 import {MdExitToApp, MdHelp, MdInfo, MdPeople,MdInsertChart,MdInsertDriveFile} from "react-icons/md";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
+import UserContext from "../contexts/userContext";
 
 function DashboardAdmin(props) {
+    const [userData, setUserData] = useContext(UserContext)
+
+    const history = useHistory()
+
+    const HandleLogout = () => {
+        setUserData(null)
+        history.push("/admin")
+    }
     return (
         <main className="bg-gray-100 dark:bg-gray-800 h-screen overflow-hidden relative">
-            <div id="modal-help" className="modal">
-                <div className="modal-box">
-                    <p>informasi taro sini</p>
-                    <div className="modal-action">
-                        <a href="#close" className="btn">
-                            Tutup
-                        </a>
-                    </div>
-                </div>
-            </div>
             <div className="shadow-lg bg-base-200 drawer drawer-mobile h-screen">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle"/>
                 <div className="flex flex-col drawer-content">
@@ -37,7 +36,7 @@ function DashboardAdmin(props) {
                                 <div className="dropdown dropdown-end">
                                     <button className="flex items-center text-white dark:text-white text-sm"
                                             tabIndex={0}>
-                                        Rahmat AJ
+                                        {userData ? userData.name : ''}
                                         <svg width="20" height="20" className="ml-2 text-gray-400" fill="currentColor"
                                              viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -46,13 +45,10 @@ function DashboardAdmin(props) {
                                     </button>
                                     <ul className="shadow menu dropdown-content bg-base-100 rounded w-52 text-black">
                                         <li className="text-black-700">
-                                            <a href={"#modal-help"}><MdHelp className="mr-3"/> Bantuan</a>
+                                            <a rel="noopener noreferrer" target="_blank" href="https://api.whatsapp.com/send?phone=6285721208155&text=Halo,%20saya%20membutuhkan%20bantuan%20dengan%20situs%20KPU%20STKIP%20Muhammadiyah%20Kuningan"><MdHelp className="mr-3"/> Bantuan</a>
                                         </li>
                                         <li className="text-red-700">
-                                            <Link to="/admin">
-                                                <MdExitToApp className="mr-3"/>
-                                                Keluar
-                                            </Link>
+                                            <a href="#logout" onClick={HandleLogout}><MdExitToApp className="mr-3"/>Keluar</a>
                                         </li>
                                     </ul>
                                 </div>

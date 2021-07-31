@@ -8,6 +8,7 @@ import Swal from 'sweetalert2'
 import moment from 'moment'
 import 'moment/locale/id';
 import {apiOptions} from "../data/apiData"
+import {log10} from "chart.js/helpers";
 
 function Dashboard() {
     const [activeStatus, setActiveStatus] = useState(1)
@@ -16,9 +17,10 @@ function Dashboard() {
     const [isVoted, setIsVoted] = useState(false)
     const [userData, setUserData] = useContext(UserContext)
     const [userVoteData, setUserVoteData] = useState(null)
+    const [canVote, setCanVote] = useState(false)
 
-    const getVoteData = () => {
-        axios.get(`https://kpu-stkip.azurewebsites.net/api/vote/${userData.nim}`,apiOptions)
+    const getVoteData = async () => {
+        await axios.get(`https://kpu-stkip.azurewebsites.net/api/vote/${userData.nim}`, apiOptions)
             .then(response => {
                 if (response.data.data.length > 0) {
                     setUserVoteData(response.data.data[0])
@@ -32,11 +34,12 @@ function Dashboard() {
                 title: 'OOPS',
                 text: 'Terjadi kesalahan pada sistem, harap hubungi pengembang.',
                 icon: 'warning',
-                confirmButtonText: 'Tutup'
+                confirmButtonText: 'Tutup',
+                confirmButtonColor: '#014E87'
             }));
     }
 
-    const HandleVote = (candidateNumber) => {
+    const HandleVote = async (candidateNumber) => {
         setIsLoading(true)
         const toBeVote = {
             nim: userData.nim,
@@ -45,14 +48,15 @@ function Dashboard() {
             vote_to: parseInt(candidateNumber)
         };
 
-        axios.post('https://kpu-stkip.azurewebsites.net/api/vote', new URLSearchParams(toBeVote),apiOptions)
+        await axios.post('https://kpu-stkip.azurewebsites.net/api/vote', new URLSearchParams(toBeVote), apiOptions)
             .then(response => {
                 if (response.data.message === "New vote created!") {
                     Swal.fire({
                         title: 'BERHASIL',
                         text: `Anda berhasil memilih calon dengan nomor urut ${candidateNumber}`,
                         icon: 'success',
-                        confirmButtonText: 'Tutup'
+                        confirmButtonText: 'Tutup',
+                        confirmButtonColor: '#014E87'
                     })
                     getVoteData()
                 } else {
@@ -60,7 +64,8 @@ function Dashboard() {
                         title: 'GAGAL',
                         text: `Anda gagal memilih calon dengan nomor urut ${candidateNumber}, harap coba lagi.`,
                         icon: 'error',
-                        confirmButtonText: 'Tutup'
+                        confirmButtonText: 'Tutup',
+                        confirmButtonColor: '#014E87'
                     })
                 }
                 setIsLoading(false)
@@ -70,14 +75,28 @@ function Dashboard() {
                     title: 'OOPS',
                     text: 'Terjadi kesalahan pada sistem, harap hubungi pengembang.',
                     icon: 'warning',
-                    confirmButtonText: 'Tutup'
+                    confirmButtonText: 'Tutup',
+                    confirmButtonColor: '#014E87'
                 })
                 setIsLoading(false)
             });
     }
 
     useEffect(() => {
-        getVoteData()
+        axios.get("http://pemira.upmk.ac.id/.config.json")
+            .then(res => {
+                setCanVote(res.data.canVote)
+                getVoteData()
+            })
+            .catch(error => {
+                Swal.fire({
+                    title: 'OOPS',
+                    text: 'Terjadi kesalahan pada sistem, harap hubungi pengembang.',
+                    icon: 'warning',
+                    confirmButtonText: 'Tutup',
+                    confirmButtonColor: '#014E87'
+                })
+            });
     }, [])
 
     const RenderCandidate = ({candidateName, candidateImage, visiMisi, candidateNumber, candidatePersonName}) => {
@@ -93,11 +112,24 @@ function Dashboard() {
                         <p className="mt-4 text-gray-600 dark:text-gray-400">{visiMisi}</p>
 
                         <div className="mt-10">
-                            <button
-                                disabled={isLoading | isVoted}
-                                onClick={() => !isLoading && HandleVote(candidateNumber)}
-                                className={isLoading ? "btn btn-primary loading px-5 py-2 font-semibold text-gray-100 rounded hover:bg-primary-focus" : "btn btn-primary px-5 py-2 font-semibold text-gray-100 rounded hover:bg-primary-focus"}>Pilih
-                                Nomor Urut {candidateName}</button>
+                            {canVote ? (
+                                <button
+                                    disabled={isLoading | isVoted}
+                                    onClick={() => !isLoading && HandleVote(candidateNumber)}
+                                    className={isLoading ? "btn btn-primary loading px-5 py-2 font-semibold text-gray-100 rounded hover:bg-primary-focus" : "btn btn-primary px-5 py-2 font-semibold text-gray-100 rounded hover:bg-primary-focus"}>Pilih
+                                    Nomor Urut {candidateName}</button>
+                            ) : (
+                                <div className="alert alert-warning">
+                                    <div className="flex-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                             className="w-6 h-6 mx-2 stroke-current">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                        </svg>
+                                        <label>Tidak dapat melakukan pemilihan saat ini.</label>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -130,7 +162,8 @@ function Dashboard() {
                                             <div className="text-sm font-medium text-gray-900">{userVoteData.name}</div>
                                             <div className="text-sm text-gray-500">{userVoteData.email}</div>
                                             <div className="text-sm text-gray-500">Memilih nomor
-                                                urut {userVoteData.vote_to} pada {moment(userVoteData.create_date).locale('id').format('LLLL')} WIB</div>
+                                                urut {userVoteData.vote_to} pada {moment(userVoteData.create_date).locale('id').format('LLLL')} WIB
+                                            </div>
                                         </div>
                                     </div>
                                 </td>

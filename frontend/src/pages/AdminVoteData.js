@@ -12,7 +12,7 @@ function AdminVoteData() {
 
     const getAllData = async () => {
         setIsloading(true)
-        await axios.get('https://kpu-stkip.azurewebsites.net/api/vote',apiOptions)
+        await axios.get('https://kpu-stkip.azurewebsites.net/api/vote', apiOptions)
             .then(response => setTotalVote(response.data.data))
             .catch((e) => setTotalVote("Error"));
         setIsloading(false)
@@ -23,7 +23,7 @@ function AdminVoteData() {
     }, [])
 
     const handleDeleteVote = async (nim) => {
-        axios.delete('https://kpu-stkip.azurewebsites.net/api/vote/' + nim,apiOptions)
+        axios.delete('https://kpu-stkip.azurewebsites.net/api/vote/' + nim, apiOptions)
             .then(response => {
                 const newTotalVote = totalVote.filter(vote => vote.nim !== nim)
                 setTotalVote(newTotalVote);
@@ -72,9 +72,11 @@ function AdminVoteData() {
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
                             {isLoading &&
-                            <div className="py-4 px-6">
-                                <h3 className="font-medium text-sm ml-4">Memuat data ...</h3>
-                            </div>
+                            <tr>
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                    <h3 className="font-medium text-sm ml-4">Memuat data ...</h3>
+                                </td>
+                            </tr>
                             }
                             {totalVote && totalVote.map((vote) => (
                                 <tr key={vote.nim}>
@@ -96,7 +98,7 @@ function AdminVoteData() {
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Calon {vote.vote_to}</td>
 
                                     )}
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{moment(vote.create_date).locale('id').format('LLLL')} WIB</td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{moment(vote.create_date).locale('id').format('LLLL')} WIB</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <a href={"#" + vote.nim} className="text-indigo-600 hover:text-indigo-900"
                                            onClick={() => handleDeleteVote(vote.nim)}>

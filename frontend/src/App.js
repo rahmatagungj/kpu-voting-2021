@@ -30,10 +30,10 @@ function App() {
                     <PrivateRoute path="/dashboard" component={Dashboard} exact/>
                     <PrivateRoute path="/dashboard/information" component={InformationPublic} exact/>
                     <Route path="/admin" component={AdminLogin} exact/>
-                    <Route path="/admin/dashboard" component={AdminDashboard} exact/>
-                    <Route path="/admin/dashboard/information" component={InformationAdmin} exact/>
-                    <Route path="/admin/dashboard/data" component={AdminVoteData} exact/>
-                    <Route path="/admin/dashboard/dpt" component={AdminDataDpt} exact/>
+                    <PrivateRoute isRouteAdmin={true} path="/admin/dashboard" component={AdminDashboard} exact/>
+                    <PrivateRoute isRouteAdmin={true} path="/admin/dashboard/information" component={InformationAdmin} exact/>
+                    <PrivateRoute isRouteAdmin={true} path="/admin/dashboard/data" component={AdminVoteData} exact/>
+                    <PrivateRoute isRouteAdmin={true} path="/admin/dashboard/dpt" component={AdminDataDpt} exact/>
                 </Switch>
             </Router>
         </UserContext.Provider>

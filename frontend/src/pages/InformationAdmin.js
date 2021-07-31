@@ -10,7 +10,7 @@ function InformationAdmin(props) {
                 <h3 className="text-base font-bold text-primary">Informasi Pemilihan (Admin)</h3>
                 <hr className="my-5"/>
                 <div className="mx-auto container flex items-center justify-evenly w-full">
-                    konten taroh sini cok
+                    to do ...
                 </div>
             </div>
         </DashboardAdmin>

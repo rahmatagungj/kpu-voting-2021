@@ -1,10 +1,10 @@
 import React, {useContext} from "react";
-import { Route, Redirect } from "react-router-dom";
+import {Route,Redirect} from "react-router-dom";
 import UserContext from "./contexts/userContext";
 
 // eslint-disable-next-line
-export default function PrivateRoute({ component: Component, ...rest }) {
-    const [userData, setUserData]  = useContext(UserContext);
+export default function PrivateRoute({isRouteAdmin = false, component: Component, ...rest}) {
+    const [userData, setUserData] = useContext(UserContext);
 
     return (
         <Route
@@ -13,9 +13,10 @@ export default function PrivateRoute({ component: Component, ...rest }) {
                 return userData ? (
                     <Component {...props} />
                 ) : (
-                    <Redirect to="/login" />
+                    isRouteAdmin ? <Redirect to="/admin"/> : <Redirect to="/login"/>
                 );
             }}
-        ></Route>
+        >
+        </Route>
     );
 }
