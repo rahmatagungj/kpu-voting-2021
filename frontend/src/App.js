@@ -12,6 +12,13 @@ import AdminVoteData from "./pages/AdminVoteData";
 import AdminDataDpt from "./pages/AdminDataDpt";
 import UserContext from "./contexts/userContext";
 import PrivateRoute from "./PrivateRoute";
+import { customerly } from "react-customerly";
+
+customerly.initialize("b2575083", {
+  widget_position: "right",
+  widget_color: "417aa5",
+  language: "id",
+});
 
 function App() {
   const [userData, setUserData] = useState(null);
