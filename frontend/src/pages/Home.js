@@ -315,7 +315,7 @@ function Home() {
                             <a
                                 href="https://www.instagram.com/rahmatagungj"
                                 target="_blank"
-                                rel={"noopener nofollow"}
+                                rel={"noopener nofollow noreferrer"}
                                 className="transition-colors duration-300 text-deep-purple-100 hover:text-teal-accent-400"
                             >
                                 <svg viewBox="0 0 30 30" fill="#ffffff" className="h-6">
