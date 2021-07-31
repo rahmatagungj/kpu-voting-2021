@@ -1,8 +1,18 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import {MdExitToApp, MdHelp, MdInfo, MdPeople} from "react-icons/md";
 import {Link} from "react-router-dom";
+import UserContext from "../contexts/userContext";
+import {useHistory} from "react-router-dom"
 
 function DashboardPublic(props) {
+    const [userData, setUserData] = useContext(UserContext)
+
+    const history = useHistory()
+
+    const HandleLogout = () => {
+        setUserData(null)
+        history.push("/login")
+    }
 
     return (
         <main className="bg-gray-100 dark:bg-gray-800 h-screen overflow-hidden relative">
@@ -10,7 +20,7 @@ function DashboardPublic(props) {
                 <div className="modal-box">
                     <p>informasi taro sini</p>
                     <div className="modal-action">
-                        <a href="#" className="btn">Tutup</a>
+                        <a href="#close" className="btn">Tutup</a>
                     </div>
                 </div>
             </div>
@@ -34,9 +44,9 @@ function DashboardPublic(props) {
                         <div className="relative z-20 flex flex-col justify-end h-full px-3 md:w-full">
                             <div className="relative p-2 flex items-center w-full space-x-4 justify-end">
                                 <div className="dropdown dropdown-end">
-                                    <button className="flex items-center text-white dark:text-white text-md"
+                                    <button className="flex items-center text-white dark:text-white text-sm"
                                             tabIndex={0}>
-                                        Rahmat AJ
+                                        {userData.name}
                                         <svg width="20" height="20" className="ml-2 text-gray-400" fill="currentColor"
                                              viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -49,7 +59,7 @@ function DashboardPublic(props) {
                                             <a href={"#modal-help"}><MdHelp className="mr-3"/> Bantuan</a>
                                         </li>
                                         <li className="text-red-700">
-                                            <Link to="/login"><MdExitToApp className="mr-3"/>Keluar</Link>
+                                            <a href="#logout" onClick={HandleLogout}><MdExitToApp className="mr-3"/>Keluar</a>
                                         </li>
                                     </ul>
                                 </div>
