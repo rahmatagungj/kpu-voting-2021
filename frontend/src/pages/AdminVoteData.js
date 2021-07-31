@@ -8,7 +8,6 @@ import {apiOptions} from "../data/apiData"
 function AdminVoteData() {
     const [totalVote, setTotalVote] = useState(null)
     const [isLoading, setIsloading] = useState(false)
-    const [canShowVote, setCanShowVote] = useState(true)
 
     const getAllData = async () => {
         setIsloading(true)
@@ -51,14 +50,12 @@ function AdminVoteData() {
                                 >
                                     Status
                                 </th>
-                                {canShowVote && (
-                                    <th
-                                        scope="col"
-                                        className="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider"
-                                    >
-                                        Memilih
-                                    </th>
-                                )}
+                                <th
+                                    scope="col"
+                                    className="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider"
+                                >
+                                    Memilih
+                                </th>
                                 <th
                                     scope="col"
                                     className="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider"
@@ -94,10 +91,7 @@ function AdminVoteData() {
                         Sudah Memilih
                       </span>
                                     </td>
-                                    {canShowVote && (
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Calon {vote.vote_to}</td>
-
-                                    )}
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{moment(vote.create_date).locale('id').format('LLLL')} WIB</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <a href={"#" + vote.nim} className="text-indigo-600 hover:text-indigo-900"

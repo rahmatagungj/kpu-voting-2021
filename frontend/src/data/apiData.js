@@ -1,5 +1,5 @@
 export const apiOptions = {
-    headers: {
-        'authorization': 'User-x-1010123'
-    }
-}
+  headers: {
+    authorization: "User-x-1010123",
+  },
+};
