@@ -1,5 +1,5 @@
 import React from "react";
-import {MdExitToApp, MdHelp, MdInfo, MdPeople, MdWork} from "react-icons/md";
+import {MdExitToApp, MdHelp, MdInfo, MdPeople,MdInsertChart,MdInsertDriveFile} from "react-icons/md";
 import {Link} from "react-router-dom";
 
 function DashboardAdmin(props) {
@@ -9,7 +9,7 @@ function DashboardAdmin(props) {
                 <div className="modal-box">
                     <p>informasi taro sini</p>
                     <div className="modal-action">
-                        <a href="#" className="btn">
+                        <a href="#close" className="btn">
                             Tutup
                         </a>
                     </div>
@@ -35,7 +35,7 @@ function DashboardAdmin(props) {
                         <div className="relative z-20 flex flex-col justify-end h-full px-3 md:w-full">
                             <div className="relative p-2 flex items-center w-full space-x-4 justify-end">
                                 <div className="dropdown dropdown-end">
-                                    <button className="flex items-center text-white dark:text-white text-md"
+                                    <button className="flex items-center text-white dark:text-white text-sm"
                                             tabIndex={0}>
                                         Rahmat AJ
                                         <svg width="20" height="20" className="ml-2 text-gray-400" fill="currentColor"
@@ -72,14 +72,20 @@ function DashboardAdmin(props) {
                                 <Link
                                     className="w-full text-gray-800 dark:text-white flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start"
                                     to="/admin/dashboard">
-                                    <MdPeople size={20}/>
+                                    <MdInsertChart size={20}/>
                                     <span className="mx-2 text-sm font-normal">Hasil Pemilihan</span>
                                 </Link>
                                 <Link
                                     className="w-full text-gray-800 dark:text-white flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start"
                                     to="/admin/dashboard/data">
-                                    <MdWork size={20}/>
+                                    <MdPeople size={20}/>
                                     <span className="mx-2 text-sm font-normal">Data Pemilihan</span>
+                                </Link>
+                                <Link
+                                    className="w-full text-gray-800 dark:text-white flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start"
+                                    to="/admin/dashboard/dpt">
+                                    <MdInsertDriveFile size={20}/>
+                                    <span className="mx-2 text-sm font-normal">Data DPT</span>
                                 </Link>
                                 <Link
                                     className="w-full text-gray-800 dark:text-white flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start"
