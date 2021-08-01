@@ -8,7 +8,6 @@ import Swal from "sweetalert2";
 import moment from "moment";
 import "moment/locale/id";
 import { apiOptions } from "../data/apiData";
-import { log10 } from "chart.js/helpers";
 
 function Dashboard() {
   const [activeStatus, setActiveStatus] = useState(1);

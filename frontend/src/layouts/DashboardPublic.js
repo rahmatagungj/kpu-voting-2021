@@ -76,7 +76,7 @@ function DashboardPublic(props) {
               </div>
             </div>
           </header>
-          <div className="p-5">{props.children}</div>
+          <div className="p-5 overflow-x-hidden">{props.children}</div>
         </div>
         <div className="border-r-2 drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay" />
