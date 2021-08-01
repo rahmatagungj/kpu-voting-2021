@@ -9,7 +9,7 @@ function NotFoundPage() {
   return (
     <div>
       <Seo title="Halaman tidak ditemukan" />
-      <div className="min-w-screen min-h-screen bg-primary flex items-center p-5 lg:p-20 overflow-hidden relative">
+      <div className="min-w-screen min-h-screen bg-primary flex items-center p-5 lg:p-40 overflow-hidden relative">
         <div className="flex-1 min-h-full min-w-full rounded-3xl bg-white shadow-xl p-10 lg:p-20 text-gray-800 relative md:flex items-center text-center">
           <div className="w-full">
             <div className="mb-10 md:mb-20 text-gray-600 font-light">
