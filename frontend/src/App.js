@@ -5,7 +5,6 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/AdminLogin";
-import Test from "./pages/Test";
 import InformationPublic from "./pages/InformationPublic";
 import InformationAdmin from "./pages/InformationAdmin";
 import AdminVoteData from "./pages/AdminVoteData";
@@ -28,7 +27,6 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" component={Home} exact />
-          <Route path="/test" component={Test} exact />
           <Route path="/login" component={Login} exact />
           <PrivateRoute path="/dashboard" component={Dashboard} exact />
           <PrivateRoute
