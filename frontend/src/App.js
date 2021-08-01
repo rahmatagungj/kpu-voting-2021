@@ -12,6 +12,7 @@ import AdminDataDpt from "./pages/AdminDataDpt";
 import UserContext from "./contexts/userContext";
 import PrivateRoute from "./PrivateRoute";
 import { customerly } from "react-customerly";
+import NotFoundPage from "./pages/NotFoundPage";
 
 customerly.initialize("b2575083", {
   widget_position: "right",
@@ -59,6 +60,7 @@ function App() {
             component={AdminDataDpt}
             exact
           />
+          <Route component={NotFoundPage} />
         </Switch>
       </Router>
     </UserContext.Provider>
