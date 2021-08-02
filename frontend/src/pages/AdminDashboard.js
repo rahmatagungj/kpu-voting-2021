@@ -7,7 +7,13 @@ import { apiOptions } from "../data/apiData";
 import { Pie, Bar } from "react-chartjs-2";
 
 function getPercentage(countVote, totalVote) {
-  return (countVote / totalVote) * 100;
+  const result = (countVote / totalVote) * 100;
+
+  if (!isNaN(result)) {
+    return result;
+  } else {
+    return 0;
+  }
 }
 
 function AdminDashboard() {
@@ -15,7 +21,6 @@ function AdminDashboard() {
   const [countVoteTwo, setCountVoteTwo] = useState(0);
   const [totalVote, setTotalVote] = useState(0);
   const [isLoading, setIsloading] = useState(true);
-  const [voteData, setVoteData] = useState(null);
   const [totalDpt, setTotalDpt] = useState(0);
 
   const getAllData = async () => {
@@ -23,7 +28,6 @@ function AdminDashboard() {
     await axios
       .get("https://kpu-stkip.azurewebsites.net/api/vote/", apiOptions)
       .then((response) => {
-        setVoteData(response.data.data);
         setTotalVote(response.data.data.length);
       })
       .catch((e) => setTotalVote(0));
@@ -38,11 +42,11 @@ function AdminDashboard() {
     await axios
       .get("https://kpu-stkip.azurewebsites.net/api/vote/count/1", apiOptions)
       .then((response) => setCountVoteOne(response.data.message))
-      .catch((e) => setCountVoteOne("Error"));
+      .catch((e) => setCountVoteOne(0));
     await axios
       .get("https://kpu-stkip.azurewebsites.net/api/vote/count/2", apiOptions)
       .then((response) => setCountVoteTwo(response.data.message))
-      .catch((e) => setCountVoteTwo("Error"));
+      .catch((e) => setCountVoteTwo(0));
     setIsloading(false);
   };
 
@@ -90,9 +94,9 @@ function AdminDashboard() {
 
   const RenderStat = () => {
     return (
-      <div className="flex justify-center mb-5 w-full">
-        <div className="stats shadow w-full rounded">
-          <div className="stat">
+      <div className="container mx-auto flex pb-0 lg:pb-5 md:flex-row flex-col items-center lg:justify-between">
+        <div className="lg:max-w-xl lg:w-full md:w-1/2 w-full mb-5 md:mb-0 lg:mr-2">
+          <div className="stat shadow rounded">
             <div className="stat-figure text-info">
               <div className="avatar">
                 <div className="w-16 h-16 p-1 mask mask-squircle bg-base-100">
@@ -108,11 +112,12 @@ function AdminDashboard() {
               {getPercentage(countVoteOne, totalVote).toString()}%
             </div>
             <div className="stat-title">{countVoteOne} Suara</div>
-            <div className="stat-desc">
-              Handika Rahmat Utama & Muhammad Abdul Aziz
-            </div>
+            <div className="stat-desc flex-wrap">Handika Rahmat Utama</div>
+            <div className="stat-desc flex-wrap">Muhammad Abdul Aziz</div>
           </div>
-          <div className="stat">
+        </div>
+        <div className="lg:max-w-xl lg:w-full md:w-1/2 w-full mb-5 md:mb-0 lg:ml-2">
+          <div className="stat shadow rounded">
             <div className="stat-figure text-info">
               <div className="avatar">
                 <div className="w-16 h-16 p-1 mask mask-squircle bg-base-100">
@@ -128,7 +133,8 @@ function AdminDashboard() {
               {getPercentage(countVoteTwo, totalVote).toString()}%
             </div>
             <div className="stat-title">{countVoteTwo} Suara</div>
-            <div className="stat-desc">Pitradi & Robi Iskandar</div>
+            <div className="stat-desc flex-wrap">Pitradi</div>
+            <div className="stat-desc flex-wrap">Robi Iskandar</div>
           </div>
         </div>
       </div>
