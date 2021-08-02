@@ -7,6 +7,7 @@ import { MdDateRange } from "react-icons/md";
 import axios from "axios";
 import Swal from "sweetalert2";
 import "./Home.css";
+import "./bgBlue.css";
 
 function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -59,7 +60,7 @@ function Home() {
   };
 
   return (
-    <div style={{ background: "#E0E7FF" }}>
+    <div>
       <Seo title={"STKIP Muhammadiyah Kuningan 2021"} />
 
       {/* navbar */}
@@ -86,6 +87,16 @@ function Home() {
                 >
                   Linimasa
                 </a>
+              </li>
+              <li>
+                <Link
+                  to="/quickcount"
+                  aria-label="toTimeline"
+                  title="toTimeline"
+                  className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                >
+                  Hasil Pemilihan Sementara
+                </Link>
               </li>
             </ul>
             <ul className="flex items-center hidden space-x-8 lg:flex">
@@ -168,6 +179,16 @@ function Home() {
                           >
                             Linimasa
                           </a>
+                        </li>
+                        <li>
+                          <Link
+                            to="/quickcount"
+                            aria-label="toTimeline"
+                            title="toTimeline"
+                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-primary-focus"
+                          >
+                            Hasil Pemilihan Sementara
+                          </Link>
                         </li>
                         <li>
                           <Link
@@ -364,7 +385,7 @@ function Home() {
           />
         </svg>
         <div className="px-4 pt-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
-          <div className="flex flex-col justify-between  pb-10 sm:flex-row">
+          <div className="flex justify-between  pb-10 flex-row items-center">
             <p className="text-sm text-gray-100">
               © 2021 - Rahmat Agung Julians
             </p>
