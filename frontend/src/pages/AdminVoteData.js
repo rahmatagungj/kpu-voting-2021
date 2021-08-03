@@ -4,6 +4,7 @@ import DashboardAdmin from "../layouts/DashboardAdmin";
 import moment from "moment";
 import "moment/locale/id";
 import { apiOptions } from "../data/apiData";
+import ExportToExcel from "../components/ExportToExcel";
 
 function AdminVoteData() {
   const [totalVote, setTotalVote] = useState(null);
@@ -147,6 +148,11 @@ function AdminVoteData() {
 
   return (
     <DashboardAdmin>
+      <ExportToExcel
+        data={totalVote}
+        fileName="Hasil Pemilihan"
+        className="btn btn-primary bg-primary hover:bg-primary-focus focus:bg-primary-focus text-white rounded mb-5"
+      />
       <RenderLogVote />
     </DashboardAdmin>
   );

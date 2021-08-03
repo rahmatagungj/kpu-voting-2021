@@ -3,6 +3,7 @@ import axios from "axios";
 import DashboardAdmin from "../layouts/DashboardAdmin";
 import "moment/locale/id";
 import Spinner from "../components/Spinner";
+import ExportToExcel from "../components/ExportToExcel";
 
 function AdminDataDpt() {
   const [totalDpt, setTotalDpt] = useState(null);
@@ -114,7 +115,18 @@ function AdminDataDpt() {
 
   return (
     <DashboardAdmin>
-      {isLoading ? <Spinner /> : <RenderLogVote />}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          <ExportToExcel
+            data={totalDpt}
+            fileName="Daftar DPT"
+            className="btn btn-primary bg-primary hover:bg-primary-focus focus:bg-primary-focus text-white rounded mb-5"
+          />
+          <RenderLogVote />
+        </>
+      )}
     </DashboardAdmin>
   );
 }
