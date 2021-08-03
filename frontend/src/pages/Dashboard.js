@@ -139,8 +139,8 @@ function Dashboard() {
                   onClick={() => !isLoading && HandleVote(candidateNumber)}
                   className={
                     isLoading
-                      ? "btn btn-primary loading px-5 py-2 font-semibold text-gray-100 rounded hover:bg-primary-focus"
-                      : "btn btn-primary px-5 py-2 font-semibold text-gray-100 rounded hover:bg-primary-focus"
+                      ? "btn btn-primary bg-primary hover:bg-primary-focus focus:bg-primary-focus loading px-5 py-2 font-semibold text-gray-100 rounded hover:bg-primary-focus"
+                      : "btn btn-primary bg-primary hover:bg-primary-focus focus:bg-primary-focus  px-5 py-2 font-semibold text-gray-100 rounded hover:bg-primary-focus"
                   }
                 >
                   Pilih Nomor Urut {candidateName}

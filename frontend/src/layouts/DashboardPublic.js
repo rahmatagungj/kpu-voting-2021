@@ -22,7 +22,7 @@ function DashboardPublic(props) {
             <div className="block lg:hidden ml-3">
               <label
                 htmlFor="my-drawer-2"
-                className="cursor-pointer flex p-2 items-center rounded-full text-gray-400 hover:text-gray-700 shadow text-md drawer-button lg:hidden"
+                className="cursor-pointer flex p-2 items-center rounded-full text-gray-400 hover:text-gray-700 text-md drawer-button lg:hidden"
               >
                 <svg
                   width="22"
