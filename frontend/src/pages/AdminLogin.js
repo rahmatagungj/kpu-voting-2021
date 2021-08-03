@@ -76,7 +76,7 @@ function AdminLogin(props) {
                   Harap masuk untuk melanjutkan
                 </p>
               </div>
-              <form className="mt-8 space-y-6">
+              <div className="mt-8 space-y-6">
                 <div className="relative">
                   <label className="ml-3 text-sm font-bold text-gray-700 tracking-wide">
                     Alamat Surel
@@ -104,8 +104,8 @@ function AdminLogin(props) {
                     type="submit"
                     className={
                       isLoading
-                        ? "btn btn-primary btn-block loading rounded shadow-md"
-                        : "btn btn-primary btn-block rounded shadow-md"
+                        ? "btn btn-primary bg-primary text-white hover:bg-primary-focus focus:bg-primary-focus btn-block loading rounded shadow-md"
+                        : "btn btn-primary bg-primary text-white hover:bg-primary-focus focus:bg-primary-focus btn-block rounded shadow-md"
                     }
                     disabled={isLoading}
                     onClick={() => HandleLogin()}
@@ -120,7 +120,7 @@ function AdminLogin(props) {
                     </Link>
                   </p>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
           <div className="sm:w-1/2 xl:w-3/5 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden bg-primary text-white bg-no-repeat bg-cover relative withBackground">

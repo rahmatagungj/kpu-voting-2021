@@ -19,6 +19,7 @@ function DashboardAdmin(props) {
     setUserData(null);
     history.push("/admin");
   };
+
   return (
     <main className="bg-gray-100 dark:bg-gray-800 h-screen overflow-hidden relative">
       <div className="shadow-lg bg-base-200 drawer drawer-mobile h-screen">
@@ -28,7 +29,7 @@ function DashboardAdmin(props) {
             <div className="block lg:hidden ml-3">
               <label
                 htmlFor="my-drawer-2"
-                className="cursor-pointer flex p-2 items-center rounded-full text-gray-400 hover:text-gray-700 shadow text-md drawer-button lg:hidden"
+                className="cursor-pointer flex p-2 items-center rounded-full text-gray-400 hover:text-gray-700 text-md drawer-button lg:hidden"
               >
                 <svg
                   width="22"

@@ -269,8 +269,8 @@ function Home() {
                       type="submit"
                       className={
                         isLoading
-                          ? "btn border-0 inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-secondary hover:bg-secondary-focus focus:shadow-outline focus:outline-none loading"
-                          : "btn border-0 inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-secondary hover:bg-secondary-focus focus:shadow-outline focus:outline-none"
+                          ? "btn border-0 inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white rounded shadow-md bg-secondary hover:bg-secondary-focus focus:shadow-outline focus:outline-none loading"
+                          : "btn border-0 inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white rounded shadow-md bg-secondary hover:bg-secondary-focus focus:shadow-outline focus:outline-none"
                       }
                     >
                       Cek
@@ -354,7 +354,7 @@ function Home() {
           {dataTimeline.map((timeline, idx) => (
             <div
               key={idx}
-              className="flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 bg-white rounded shadow-xl group hover:shadow-2xl"
+              className="my-1 lg:my-0 flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 bg-white rounded shadow-xl group hover:shadow-2xl"
             >
               <div className="p-5">
                 <p className="mb-2 font-bold flex items-center">
