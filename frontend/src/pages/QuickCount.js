@@ -132,8 +132,8 @@ const QuickCount = () => {
                   <div className="p-5 bg-white border rounded shadow-sm">
                     <div className="flex items-center justify-between mb-4">
                       <div>
-                        <a
-                          href="/"
+                        <Link
+                          to="/"
                           aria-label="Company"
                           title="Company"
                           className="inline-flex items-center"
@@ -141,7 +141,7 @@ const QuickCount = () => {
                           <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
                             PEMIRA
                           </span>
-                        </a>
+                        </Link>
                       </div>
                       <div>
                         <button
@@ -204,7 +204,7 @@ const QuickCount = () => {
               <img
                 className="object-cover object-center rounded"
                 alt="hero"
-                src="https://i.ibb.co/nj60Cfh/politician-giving-his-speech-to-public.png"
+                src="https://i.ibb.co/fHZ3FjF/politician-giving-his-speech-to-public-min.png"
               />
             </div>
             <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
