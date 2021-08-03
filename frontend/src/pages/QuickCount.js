@@ -11,7 +11,7 @@ function getPercentage(countVote, totalVote) {
   const result = (countVote / totalVote) * 100;
 
   if (!isNaN(result)) {
-    return result;
+    return result.toFixed(1);
   } else {
     return 0;
   }
