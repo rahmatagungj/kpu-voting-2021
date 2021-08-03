@@ -138,8 +138,8 @@ function Home() {
                   <div className="p-5 bg-white border rounded shadow-sm">
                     <div className="flex items-center justify-between mb-4">
                       <div>
-                        <a
-                          href="/"
+                        <Link
+                          to="/"
                           aria-label="Company"
                           title="Company"
                           className="inline-flex items-center"
@@ -147,7 +147,7 @@ function Home() {
                           <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
                             PEMIRA
                           </span>
-                        </a>
+                        </Link>
                       </div>
                       <div>
                         <button
