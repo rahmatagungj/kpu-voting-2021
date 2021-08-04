@@ -105,9 +105,31 @@
 }
 
 .withBackground {
-  background: url(https://i.ibb.co/Pwc98xp/6386-min.jpg) no-repeat center center fixed;
+  background: url(https://i.ibb.co/Pwc98xp/6386-min.jpg) no-repeat center center
+    fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+@media screen and (max-width: 767px) {
+  .animated-panel {
+    animation: zoomIn;
+    animation-duration: 1s;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .animated-panel {
+    animation: fadeIn;
+    animation-duration: 1s;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .animated-tagline {
+    animation: slideInUp;
+    animation-duration: 1s;
+  }
 }

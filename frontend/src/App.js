@@ -14,6 +14,7 @@ import PrivateRoute from "./PrivateRoute";
 import { customerly } from "react-customerly";
 import NotFoundPage from "./pages/NotFoundPage";
 import QuickCount from "./pages/QuickCount";
+import "animate.css";
 
 customerly.initialize("b2575083", {
   widget_position: "right",
