@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import DashboardAdmin from "../layouts/DashboardAdmin";
 import moment from "moment";
 import "moment/locale/id";
 import { apiOptions } from "../data/apiData";
 import ExportToExcel from "../components/ExportToExcel";
+import { whitelistNimDeveloper } from "../data/whitelistNim";
+import Swal from "sweetalert2";
+import UserContext from "../contexts/userContext";
 
 function AdminVoteData() {
   const [totalVote, setTotalVote] = useState(null);
   const [isLoading, setIsloading] = useState(false);
+  const [userData, setUserData] = useContext(UserContext);
 
   const getAllData = async () => {
     setIsloading(true);
@@ -24,13 +28,34 @@ function AdminVoteData() {
   }, []);
 
   const handleDeleteVote = async (nim) => {
-    axios
-      .delete("https://kpu-stkip.azurewebsites.net/api/vote/" + nim, apiOptions)
-      .then((response) => {
-        const newTotalVote = totalVote.filter((vote) => vote.nim !== nim);
-        setTotalVote(newTotalVote);
-      })
-      .catch((e) => console.log(e));
+    if (whitelistNimDeveloper.indexOf(userData.nim) > -1) {
+      axios
+        .delete(
+          "https://kpu-stkip.azurewebsites.net/api/vote/" + nim,
+          apiOptions
+        )
+        .then((response) => {
+          const newTotalVote = totalVote.filter((vote) => vote.nim !== nim);
+          setTotalVote(newTotalVote);
+        })
+        .catch((e) =>
+          Swal.fire({
+            title: "OOPS",
+            text: "Terjadi kesalahan, harap coba lagi.",
+            icon: "warning",
+            confirmButtonText: "Tutup",
+            confirmButtonColor: "#014E87",
+          })
+        );
+    } else {
+      Swal.fire({
+        title: "GAGAL",
+        text: "Anda tidak memiliki izin.",
+        icon: "error",
+        confirmButtonText: "Tutup",
+        confirmButtonColor: "#014E87",
+      });
+    }
   };
 
   const RenderLogVote = () => {

@@ -11,8 +11,13 @@ function InformationAdmin(props) {
           Informasi Pemilihan (Admin)
         </h3>
         <hr className="my-5" />
-        <div className="mx-auto container flex items-center justify-evenly w-full">
-          to do ...
+        <div className="mx-auto container flex w-full  px-5">
+          <ul className="list-decimal">
+            <li>
+              Tidak diperkenankan menyebarkan informasi yang terdapat pada
+              halaman pengurus kepada pihak luar.
+            </li>
+          </ul>
         </div>
       </div>
     </DashboardAdmin>

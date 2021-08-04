@@ -8,6 +8,9 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import "./Home.css";
 import "./bgBlue.css";
+import Fade from "react-reveal/Fade";
+import Slide from "react-reveal/Slide";
+import Zoom from "react-reveal/Zoom";
 
 function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -231,17 +234,17 @@ function Home() {
           </svg>
           <div className="relative px-4 py-16 mx-auto overflow-hidden sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-32">
             <div className="flex flex-col items-center justify-between xl:flex-row">
-              <div className="w-full max-w-xl mb-12 xl:mb-0 xl:pr-16 xl:w-7/12">
+              <div className="w-full max-w-xl mb-12 xl:mb-0 xl:pr-16 xl:w-7/12 animate__animated animate__fadeInUp">
                 <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
                   Pemilihan Umum Raya
                 </h2>
                 <p className="max-w-xl mb-4 text-base text-gray-200 md:text-lg">
-                  Pemilihan presiden mahasiswa BEM STKIP Muhammadiyah Kuningan,
-                  2021.
+                  Pemilihan Presiden dan Wakil Presiden Badan Eksekutif
+                  Mahasiswa STKIP Muhammadiyah Kuningan 2021-2022.
                 </p>
               </div>
               <div className="w-full max-w-xl xl:px-8 xl:w-5/12">
-                <div className="bg-white rounded shadow-2xl p-7 sm:p-10">
+                <div className="bg-white rounded shadow-2xl p-7 sm:p-10 animate__animated animate__zoomIn">
                   <h3 className="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
                     Cek Status DPT
                   </h3>
@@ -289,20 +292,22 @@ function Home() {
       {/* hero end */}
 
       {/* about */}
-      <div className="flex justify-center items-center py-10 px-10 my-5">
-        <div className="mockup-window bg-base-300 max-w-2xl md:max-w-3xl shadow-md">
-          <div className="flex flex-col justify-center px-4 py-5 bg-info">
-            <h1 className="text-3xl font-bold text-white mb-3">
-              Pemira itu apa, <i>sih?</i>
-            </h1>
-            <p className="text-1xl font-medium text-white">
-              Pemilihan Umum Raya adalah kegiatan pemilihan presiden mahasiswa
-              BEM STKIP Muhammadiyah Kuningan sebagai salah satu perwujudan
-              demokrasi Mahasiswa STKIP Muhammadiyah Kuningan.
-            </p>
+      <Zoom>
+        <div className="flex justify-center items-center py-10 px-5 lg:px-10 my-5">
+          <div className="mockup-window bg-base-300 max-w-2xl md:max-w-3xl shadow-md">
+            <div className="flex flex-col justify-center px-4 py-5 bg-info">
+              <h1 className="text-3xl font-bold text-white mb-3">
+                Pemira itu apa, <i>sih?</i>
+              </h1>
+              <p className="text-1xl font-medium text-white">
+                Pemilihan Umum Raya adalah kegiatan pemilihan presiden mahasiswa
+                BEM STKIP Muhammadiyah Kuningan sebagai salah satu perwujudan
+                demokrasi Mahasiswa STKIP Muhammadiyah Kuningan.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </Zoom>
       {/* about end */}
 
       {/* timeline */}
@@ -335,12 +340,16 @@ function Home() {
                   height="24"
                 />
               </svg>
-              <span className="relative text-primary">LINIMASA</span>
+              <span className="relative text-primary">
+                <Slide bottom> LINIMASA</Slide>
+              </span>
             </span>
           </h2>
-          <p className="text-base text-gray-700 md:text-lg">
-            Pemilihan umum raya 2021 STKIP Muhammadiyah Kuningan.
-          </p>
+          <Slide bottom>
+            <p className="text-base text-gray-700 md:text-lg">
+              Pemilihan Umum Raya 2021 BEM STKIP Muhammadiyah Kuningan.
+            </p>
+          </Slide>
         </div>
       </div>
       <div className="relative px-4 py-3 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-5">
@@ -352,21 +361,20 @@ function Home() {
         <div className="relative grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {/* Mapping data Timeline to Layout */}
           {dataTimeline.map((timeline, idx) => (
-            <div
-              key={idx}
-              className="my-1 lg:my-0 flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 bg-white rounded shadow-xl group hover:shadow-2xl"
-            >
-              <div className="p-5">
-                <p className="mb-2 font-bold flex items-center">
-                  <MdDateRange className={"mr-1"} />
-                  {timeline.date}
-                </p>
-                <p className="text-sm leading-5 text-gray-900">
-                  {timeline.details}
-                </p>
+            <Fade bottom key={idx}>
+              <div className="my-1 lg:my-0 flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 bg-white rounded shadow-xl group hover:shadow-2xl">
+                <div className="p-5">
+                  <p className="mb-2 font-bold flex items-center">
+                    <MdDateRange className={"mr-1"} />
+                    {timeline.date}
+                  </p>
+                  <p className="text-sm leading-5 text-gray-900">
+                    {timeline.details}
+                  </p>
+                </div>
+                <div className="w-full h-1 ml-auto duration-300 origin-left transform scale-x-0 bg-primary-focus group-hover:scale-x-100" />
               </div>
-              <div className="w-full h-1 ml-auto duration-300 origin-left transform scale-x-0 bg-primary-focus group-hover:scale-x-100" />
-            </div>
+            </Fade>
           ))}
           {/* End Mapping */}
         </div>

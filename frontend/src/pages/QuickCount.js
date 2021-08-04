@@ -67,7 +67,7 @@ const QuickCount = () => {
     <div>
       <Seo title={"Hasil Pemilihan Sementara"} />
 
-      <div class="flex flex-col min-h-screen ">
+      <div className="flex flex-col min-h-screen ">
         {/* navbar */}
         <div className="bg-primary">
           <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
@@ -197,7 +197,7 @@ const QuickCount = () => {
 
         {/* end navbar  */}
 
-        <main class="flex-grow">
+        <main className="flex-grow">
           {/* Hero */}
           {!isFullLoaded && (
             <section className="text-gray-600 body-font">
@@ -209,13 +209,14 @@ const QuickCount = () => {
                     src="https://i.ibb.co/fHZ3FjF/politician-giving-his-speech-to-public-min.png"
                   />
                 </div>
-                <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+                <div className="animate__animated animate__slideInUp lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
                   <h2 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
                     Hasil Pemilihan Sementara
                   </h2>
                   <p className="mb-8 leading-relaxed">
-                    Rekapitulasi Hasil Pemilihan Sementara presiden mahasiswa
-                    BEM STKIP Muhammadiyah Kuningan, 2021.
+                    Rekapitulasi Hasil Pemilihan Sementara Presiden dan Wakil
+                    Presiden Badan Eksekutif Mahasiswa STKIP Muhammadiyah
+                    Kuningan 2021-2022.
                   </p>
                   <div className="flex justify-center">
                     <button
@@ -223,8 +224,8 @@ const QuickCount = () => {
                       disabled={isLoading}
                       className={
                         isLoading
-                          ? "btn btn-primary bg-primary hover:bg-primary-focus focus:bg-primary-focus inline-flex text-white border-0 py-2 px-6 focus:outline-none rounded text-lg loading"
-                          : "btn btn-primary bg-primary hover:bg-primary-focus focus:bg-primary-focus inline-flex text-white border-0 py-2 px-6 focus:outline-none rounded text-lg"
+                          ? "animate__animated animate__pulse animate__delay-1s btn btn-primary bg-primary hover:bg-primary-focus focus:bg-primary-focus inline-flex text-white border-0 py-2 px-6 focus:outline-none rounded text-lg loading"
+                          : "animate__animated animate__pulse animate__delay-1s btn btn-primary bg-primary hover:bg-primary-focus focus:bg-primary-focus inline-flex text-white border-0 py-2 px-6 focus:outline-none rounded text-lg"
                       }
                     >
                       Lihat

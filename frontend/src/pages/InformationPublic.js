@@ -22,10 +22,13 @@ function InformationPublic() {
               Pemungutan suara dilakukan dengan ketentuan sebagai berikut:
             </li>
             <ul className="ml-5 list-disc">
-              <li>Pemilih harus memasukan ID dan Password akun SIAMIK</li>
+              <li>
+                Pemilih harus memasukan Alamat Surel dan Kata sandi yang telah
+                disediakan di SIAMIK.
+              </li>
               <li>
                 Pemilihan dapat dilakukan dengan cara memilih salah satu foto
-                pasangan calon pada bagian website yang sudah disediakan
+                pasangan calon pada bagian website yang sudah disediakan.
               </li>
             </ul>
           </ul>
