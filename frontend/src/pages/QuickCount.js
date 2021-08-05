@@ -23,16 +23,16 @@ const QuickCount = () => {
   const [isFullLoaded, setIsFullLoaded] = useState(false);
   const [countVoteOne, setCountVoteOne] = useState(null);
   const [countVoteTwo, setCountVoteTwo] = useState(null);
-  const [totalVote, setTotalVote] = useState(0);
+  const [voteData, setVoteData] = useState(0);
   const [totalDpt, setTotalDpt] = useState(0);
 
   const getAllData = async () => {
     await axios
       .get("https://kpu-stkip.azurewebsites.net/api/vote/", apiOptions)
       .then((response) => {
-        setTotalVote(response.data.data.length);
+        setVoteData(response);
       })
-      .catch((e) => setTotalVote(0));
+      .catch((e) => setVoteData(null));
     await axios
       .get(
         "http://siamik.upmk.ac.id/apijson.php?method=dpt&secret_key=365rywegf23987439857h&client_key=rahmatagungjulians"
@@ -40,7 +40,7 @@ const QuickCount = () => {
       .then((response) => {
         setTotalDpt(response.data.length);
       })
-      .catch((e) => setTotalVote(0));
+      .catch((e) => setTotalDpt(0));
     await axios
       .get("https://kpu-stkip.azurewebsites.net/api/vote/count/1", apiOptions)
       .then((response) => setCountVoteOne(response.data.message))
@@ -61,7 +61,7 @@ const QuickCount = () => {
     if (countVoteOne !== null && countVoteTwo !== null) {
       setIsFullLoaded(true);
     }
-  }, [countVoteOne, countVoteTwo, totalVote, totalDpt]);
+  }, [countVoteOne, countVoteTwo, voteData, totalDpt]);
 
   return (
     <div>
@@ -262,7 +262,7 @@ const QuickCount = () => {
                       ></path>
                     </svg>
                     <label>
-                      Data pada {moment(new Date()).locale("id").format("LLLL")}{" "}
+                      Data pada {moment(voteData.data.date).locale("id").format("LLLL")}{" "}
                       WIB
                     </label>
                   </div>
@@ -283,7 +283,7 @@ const QuickCount = () => {
                       </div>
                     </div>
                     <div className="stat-value">
-                      {getPercentage(countVoteOne, totalVote).toString()}%
+                      {getPercentage(countVoteOne, voteData.data.data.length).toString()}%
                     </div>
                     <div className="stat-title">{countVoteOne} Suara</div>
                     <div className="stat-desc flex-wrap">
@@ -308,7 +308,7 @@ const QuickCount = () => {
                       </div>
                     </div>
                     <div className="stat-value">
-                      {getPercentage(countVoteTwo, totalVote).toString()}%
+                      {getPercentage(countVoteTwo, voteData.data.data.length).toString()}%
                     </div>
                     <div className="stat-title">{countVoteTwo} Suara</div>
                     <div className="stat-desc flex-wrap">Pitradi</div>
@@ -329,12 +329,12 @@ const QuickCount = () => {
                     </div>
                   </div>
                   <div className="stat-value">
-                    {totalVote}/{totalDpt.toLocaleString()}
+                    {voteData.data.data.length}/{totalDpt.toLocaleString()}
                   </div>
                   <div className="stat-title">Jumlah suara</div>
                   <div className="stat-desc">
                     <progress
-                      value={getPercentage(totalVote, totalDpt)}
+                      value={getPercentage(voteData.data.length, totalDpt)}
                       max={totalDpt}
                       className="progress progress-secondary"
                     ></progress>
