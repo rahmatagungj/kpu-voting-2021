@@ -395,7 +395,14 @@ function Home() {
         <div className="px-4 pt-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
           <div className="flex justify-between  pb-10 flex-row items-center">
             <p className="text-sm text-gray-100">
-              © 2021 - Rahmat Agung Julians
+              © 2021 -{" "}
+              <a
+                href="https://www.instagram.com/rahmatagungj"
+                target="_blank"
+                rel={"noopener nofollow noreferrer"}
+              >
+                Rahmat Agung Julians
+              </a>
             </p>
             <div className="flex items-center mt-4 space-x-4 sm:mt-0">
               <a
