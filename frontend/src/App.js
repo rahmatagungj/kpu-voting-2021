@@ -30,7 +30,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" component={Home} exact />
-          <Route path="/quickcount" component={QuickCount} exact />
+          {/* <Route path="/quickcount" component={QuickCount} exact /> */}
           <Route path="/login" component={Login} exact />
           <PrivateRoute path="/dashboard" component={Dashboard} exact />
           <PrivateRoute

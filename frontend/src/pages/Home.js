@@ -91,7 +91,7 @@ function Home() {
                   Linimasa
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   to="/quickcount"
                   aria-label="toTimeline"
@@ -100,7 +100,7 @@ function Home() {
                 >
                   Hasil Pemilihan Sementara
                 </Link>
-              </li>
+              </li> */}
             </ul>
             <ul className="flex items-center hidden space-x-8 lg:flex">
               <li>
@@ -183,7 +183,7 @@ function Home() {
                             Linimasa
                           </a>
                         </li>
-                        <li>
+                        {/* <li>
                           <Link
                             to="/quickcount"
                             aria-label="toTimeline"
@@ -192,7 +192,7 @@ function Home() {
                           >
                             Hasil Pemilihan Sementara
                           </Link>
-                        </li>
+                        </li> */}
                         <li>
                           <Link
                             to="/login"
