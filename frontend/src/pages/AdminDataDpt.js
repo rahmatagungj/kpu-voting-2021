@@ -1,29 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import DashboardAdmin from "../layouts/DashboardAdmin";
 import "moment/locale/id";
 import Spinner from "../components/Spinner";
 import ExportToExcel from "../components/ExportToExcel";
+import { dataDpt } from "../data/dataDpt";
 
 function AdminDataDpt() {
-  const [totalDpt, setTotalDpt] = useState(null);
-  const [isLoading, setIsloading] = useState(false);
-
-  const getAllData = async () => {
-    setIsloading(true);
-    await axios
-      .get(
-        "http://siamik.upmk.ac.id/apijson.php?method=dpt&secret_key=365rywegf23987439857h&client_key=rahmatagungjulians"
-      )
-      .then((response) => setTotalDpt(response.data))
-      .catch((e) => setTotalDpt(e));
-    setIsloading(false);
-  };
-
-  useEffect(() => {
-    getAllData();
-  }, []);
-
   const RenderLogVote = () => {
     return (
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -65,8 +47,8 @@ function AdminDataDpt() {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {totalDpt &&
-                  totalDpt.map((vote) => (
+                {dataDpt &&
+                  dataDpt.map((vote) => (
                     <tr key={vote.nim}>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
@@ -115,18 +97,12 @@ function AdminDataDpt() {
 
   return (
     <DashboardAdmin>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        <>
-          <ExportToExcel
-            data={totalDpt}
-            fileName="Daftar DPT"
-            className="btn btn-primary bg-primary hover:bg-primary-focus focus:bg-primary-focus text-white rounded mb-5"
-          />
-          <RenderLogVote />
-        </>
-      )}
+      <ExportToExcel
+        data={dataDpt}
+        fileName="Daftar DPT"
+        className="btn btn-primary bg-primary hover:bg-primary-focus focus:bg-primary-focus text-white rounded mb-5"
+      />
+      <RenderLogVote />
     </DashboardAdmin>
   );
 }

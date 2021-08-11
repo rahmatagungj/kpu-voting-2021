@@ -11,16 +11,17 @@ import AdminVoteData from "./pages/AdminVoteData";
 import AdminDataDpt from "./pages/AdminDataDpt";
 import UserContext from "./contexts/userContext";
 import PrivateRoute from "./PrivateRoute";
-import { customerly } from "react-customerly";
+// import { customerly } from "react-customerly";
 import NotFoundPage from "./pages/NotFoundPage";
 import QuickCount from "./pages/QuickCount";
 import "animate.css";
+import HomeEnd from "./pages/HomeEnd";
 
-customerly.initialize("b2575083", {
-  widget_position: "right",
-  widget_color: "417aa5",
-  language: "id",
-});
+// customerly.initialize("b2575083", {
+//   widget_position: "right",
+//   widget_color: "417aa5",
+//   language: "id",
+// });
 
 function App() {
   const [userData, setUserData] = useState(null);
@@ -29,15 +30,15 @@ function App() {
     <UserContext.Provider value={[userData, setUserData]}>
       <Router>
         <Switch>
-          <Route path="/" component={Home} exact />
+          <Route path="/" component={HomeEnd} exact />
           {/* <Route path="/quickcount" component={QuickCount} exact /> */}
-          <Route path="/login" component={Login} exact />
-          <PrivateRoute path="/dashboard" component={Dashboard} exact />
-          <PrivateRoute
+          {/* <Route path="/login" component={Login} exact /> */}
+          {/* <PrivateRoute path="/dashboard" component={Dashboard} exact /> */}
+          {/* <PrivateRoute
             path="/dashboard/information"
             component={InformationPublic}
             exact
-          />
+          /> */}
           <Route path="/admin" component={AdminLogin} exact />
           <PrivateRoute
             isRouteAdmin={true}
