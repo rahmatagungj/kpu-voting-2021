@@ -32,18 +32,18 @@ function HomeEnd() {
                 </span>
               </Link>
               <ul className="flex items-center hidden space-x-8 lg:flex">
-                {/* <li>
+                <li>
                   <a
                     href="#result"
                     aria-label="toTimeline"
                     title="toTimeline"
-                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                    className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded-full shadow-md bg-accent hover:bg-accent-focus focus:shadow-outline focus:outline-none"
                   >
                     Hasil Pemilihan
                   </a>
-                </li> */}
+                </li>
               </ul>
-              <ul className="flex items-center hidden space-x-8 lg:flex">
+              {/* <ul className="flex items-center hidden space-x-8 lg:flex">
                 <li>
                   <Link
                     to="/admin"
@@ -54,7 +54,7 @@ function HomeEnd() {
                     <FaSignInAlt className={"mr-3"} /> Masuk Pengurus
                   </Link>
                 </li>
-              </ul>
+              </ul> */}
               <div className="lg:hidden">
                 <button
                   aria-label="Open Menu"
@@ -114,17 +114,17 @@ function HomeEnd() {
                       </div>
                       <nav>
                         <ul className="space-y-4">
-                          {/* <li>
+                          <li>
                             <a
                               href="#result"
                               aria-label="toTimeline"
                               title="toTimeline"
-                              className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                              className="inline-flex items-center justify-center w-full h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded-full  shadow-md bg-accent hover:bg-accent-focus focus:shadow-outline focus:outline-none"
                             >
                               Hasil Pemilihan
                             </a>
-                          </li> */}
-                          <li>
+                          </li>
+                          {/* <li>
                             <Link
                               to="/admin"
                               className="inline-flex items-center justify-center w-full h-10 px-6 font-medium tracking-wide text-white transition duration-200 rounded-full  shadow-md bg-accent hover:bg-accent-focus focus:shadow-outline focus:outline-none"
@@ -133,7 +133,7 @@ function HomeEnd() {
                             >
                               Masuk Pengurus
                             </Link>
-                          </li>
+                          </li> */}
                         </ul>
                       </nav>
                     </div>
@@ -186,94 +186,97 @@ function HomeEnd() {
           </section>
         </div>
 
-        {/* <section>
-        <div className="flex flex-col items-start px-5 pb-20 mx-auto lg:items-center md:flex-row lg:px-28">
-          <Zoom>
-            <div className="w-full mb-10 lg:w-7/8 lg:max-w-lg md:w-1/2 bg-white shadow-lg hover:shadow-xl rounded-lg">
-              <img
-                className="object-cover object-center"
-                alt="hero"
-                src=""
-              />
-            </div>
-          </Zoom>
-          <div className="flex flex-col items-start text-left lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16">
-            <Fade bottom>
-              <h1 className="text-2xl font-bold tracking-tighter text-left text-primary lg:text-5xl title-font">
-                {" "}
-                Pasangan Terpilih
-              </h1>
-            </Fade>
-            <Fade bottom>
-              <h3 className="font-bold tracking-tighter text-left text-gray-600 lg:text-l my-7 lg:my-5 w-full lg:w-4/5 title-font">
-                Presiden dan Wakil Presiden Badan Eksekutif Mahasiswa STKIP
-                Muhammadiyah Kuningan.
-              </h3>
-            </Fade>
-            <div className="flex flex-wrap -mx-4 -mt-4 -mb-10 sm:-m-4 ">
-              <div className="flex flex-col items-start p-4 mb-2 lg:mb-6 text-left md:w-1/2 md:mb-0">
+        <div style={{ backgroundColor: "#e0e7ff" }}>
+          <section id="result" className="flex flex-col justify-center">
+            <div className="flex flex-col items-start px-5 pb-20 mx-auto lg:items-center md:flex-row lg:px-28">
+              <Zoom>
+                <div className="w-full mb-10 lg:w-7/8 lg:max-w-lg md:w-1/2 bg-white shadow hover:shadow-xl rounded-lg">
+                  <img
+                    className="object-cover object-center"
+                    alt="hero"
+                    src="http://pemira.upmk.ac.id/winner.png"
+                  />
+                </div>
+              </Zoom>
+              <div className="flex flex-col items-start text-left lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16">
                 <Fade bottom>
-                  <div className="flex-grow">
-                    <h2 className="mb-3 text-xl font-medium tracking-tighter text-gray-600 title-font">
-                      {" "}
-                      Handika Rahmat Utama
-                    </h2>
-                    <p className="text-gray-600 leading-relaxed text-sm">
-                      Pendidikan Bahasa dan Sastra Sunda <br /> Semester 6
-                    </p>
-                  </div>
+                  <h1 className="text-2xl font-bold tracking-tighter text-left text-primary lg:text-5xl title-font">
+                    {" "}
+                    Pasangan Terpilih
+                  </h1>
                 </Fade>
-              </div>
-              <div className="flex flex-col items-start p-4 mb-2 lg:mb-6 text-left md:w-1/2 md:mb-0">
                 <Fade bottom>
-                  <div className="flex-grow">
-                    <h2 className="mb-3 text-xl font-medium tracking-tighter text-gray-600 title-font">
-                      {" "}
-                      Muhammad Abdul Aziz
-                    </h2>
-                    <p className="text-gray-600 leading-relaxed text-sm">
-                      Pendidikan Jasmani Kesehatan dan Rekreasi <br />
-                      Semester 6
-                    </p>
-                  </div>
+                  <h3 className="font-bold tracking-tighter text-left text-gray-600 lg:text-l my-7 lg:my-5 w-full lg:w-4/5 title-font">
+                    Presiden dan Wakil Presiden Badan Eksekutif Mahasiswa STKIP
+                    Muhammadiyah Kuningan.
+                  </h3>
                 </Fade>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-        {/* <section className="text-gray-400 body-font my-5" id="result">
-        <div className="container px-5 pb-20 mx-auto">
-          <div className="flex flex-col text-center w-full mb-20">
-            <Slide bottom>
-              <h1 className="sm:text-4xl text-3xl font-medium title-font mb-4 text-primary">
-                Hasil Pemilihan
-              </h1>
-            </Slide>
-            <Slide bottom>
-              <p className="lg:w-2/3 mx-auto leading-relaxed text-gray-700">
-                Rekapitulasi Hasil Pemilihan Presiden dan Wakil Presiden Badan
-                Eksekutif Mahasiswa STKIP Muhammadiyah Kuningan 2021-2022.
-              </p>
-            </Slide>
-          </div>
-          <div className="flex flex-wrap -m-4 text-center">
-            {dataStat.map((stat) => (
-              <Pulse key={stat.title}>
-                <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
-                  <div className="px-4 py-6 rounded-lg bg-white shadow-lg hover:shadow-xl">
-                    <h2 className="title-font font-medium text-3xl text-black">
-                      {stat.value.toLocaleString()}
-                    </h2>
-                    <p className="leading-relaxed">{stat.title}</p>
+                <div className="flex flex-wrap -mx-4 -mt-4 -mb-10 sm:-m-4 ">
+                  <div className="flex flex-col items-start p-4 mb-2 lg:mb-6 text-left md:w-1/2 md:mb-0">
+                    <Fade bottom>
+                      <div className="flex-grow">
+                        <h2 className="mb-3 text-xl font-medium tracking-tighter text-gray-600 title-font">
+                          {" "}
+                          Handika Rahmat Utama
+                        </h2>
+                        <p className="text-gray-600 leading-relaxed text-sm">
+                          Pendidikan Bahasa dan Sastra Sunda <br /> Semester 6
+                        </p>
+                      </div>
+                    </Fade>
+                  </div>
+                  <div className="flex flex-col items-start p-4 mb-2 lg:mb-6 text-left md:w-1/2 md:mb-0">
+                    <Fade bottom>
+                      <div className="flex-grow">
+                        <h2 className="mb-3 text-xl font-medium tracking-tighter text-gray-600 title-font">
+                          {" "}
+                          Muhammad Abdul Aziz
+                        </h2>
+                        <p className="text-gray-600 leading-relaxed text-sm">
+                          Pendidikan Jasmani Kesehatan dan Rekreasi <br />
+                          Semester 6
+                        </p>
+                      </div>
+                    </Fade>
                   </div>
                 </div>
-              </Pulse>
-            ))}
-          </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="text-gray-400 body-font my-5 bg-transparent">
+            <div className="container px-5 pb-20 mx-auto">
+              <div className="flex flex-col text-center w-full mb-20">
+                <Slide bottom>
+                  <h1 className="sm:text-4xl text-3xl font-medium title-font mb-4 text-primary">
+                    Hasil Pemilihan
+                  </h1>
+                </Slide>
+                <Slide bottom>
+                  <p className="lg:w-2/3 mx-auto leading-relaxed text-gray-700">
+                    Rekapitulasi Hasil Pemilihan Presiden dan Wakil Presiden
+                    Badan Eksekutif Mahasiswa STKIP Muhammadiyah Kuningan
+                    2021-2022.
+                  </p>
+                </Slide>
+              </div>
+              <div className="flex flex-wrap -m-4 text-center">
+                {dataStat.map((stat) => (
+                  <Pulse key={stat.title}>
+                    <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
+                      <div className="px-4 py-6 rounded-lg bg-white shadow-lg hover:shadow-xl">
+                        <h2 className="title-font font-medium text-3xl text-black">
+                          {stat.value.toLocaleString()}
+                        </h2>
+                        <p className="leading-relaxed">{stat.title}</p>
+                      </div>
+                    </div>
+                  </Pulse>
+                ))}
+              </div>
+            </div>
+          </section>
         </div>
-      </section> */}
         <div className="flex-grow" />
 
         <div className="relative bg-primary">

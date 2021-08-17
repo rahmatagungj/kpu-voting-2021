@@ -4,19 +4,19 @@ export const dataStat = [
     title: "Mahasiswa",
   },
   {
-    value: 1000,
+    value: 655,
     title: "Pemilih",
   },
   {
-    value: 295,
+    value: 640,
     title: "Tidak Memilih",
   },
   {
-    value: 1000,
+    value: 434,
     title: "Jumlah Suara Nomor Urut 1",
   },
   {
-    value: 295,
+    value: 221,
     title: "Jumlah Suara Nomor Urut 2",
   },
 ];
